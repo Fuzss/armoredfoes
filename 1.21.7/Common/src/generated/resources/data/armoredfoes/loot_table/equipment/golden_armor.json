@@ -1,0 +1,129 @@
+{
+  "type": "minecraft:equipment",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "armoredfoes:simple_sequence",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:golden_helmet"
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.9,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "armoredfoes:difficulty_check",
+                      "difficulty": "hard"
+                    }
+                  ],
+                  "name": "minecraft:golden_chestplate"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.75,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "minecraft:inverted",
+                      "term": {
+                        "condition": "armoredfoes:difficulty_check",
+                        "difficulty": "hard"
+                      }
+                    }
+                  ],
+                  "name": "minecraft:golden_chestplate"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.9,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "armoredfoes:difficulty_check",
+                      "difficulty": "hard"
+                    }
+                  ],
+                  "name": "minecraft:golden_leggings"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.75,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "minecraft:inverted",
+                      "term": {
+                        "condition": "armoredfoes:difficulty_check",
+                        "difficulty": "hard"
+                      }
+                    }
+                  ],
+                  "name": "minecraft:golden_leggings"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.9,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "armoredfoes:difficulty_check",
+                      "difficulty": "hard"
+                    }
+                  ],
+                  "name": "minecraft:golden_boots"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.75,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "minecraft:inverted",
+                      "term": {
+                        "condition": "armoredfoes:difficulty_check",
+                        "difficulty": "hard"
+                      }
+                    }
+                  ],
+                  "name": "minecraft:golden_boots"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "armoredfoes:equipment/golden_armor"
+}

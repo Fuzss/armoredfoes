@@ -1,0 +1,7 @@
+// 1.21.7	2025-07-17T01:10:17.678691	Mod Equipment Loot Provider
+c4808c8e54b426096482dd0a5a79dfe95137d926 data/armoredfoes/loot_table/equipment/chainmail_armor.json
+a40c8afdb88e068bf81018396c81a8d2e13d24d7 data/armoredfoes/loot_table/equipment/diamond_armor.json
+8d0214046ad59130775447a475f92ef93407d893 data/armoredfoes/loot_table/equipment/golden_armor.json
+f23782f3efa5947458ad637497972b7ca34f0531 data/armoredfoes/loot_table/equipment/iron_armor.json
+c4046ef804194a670165b4e2bfdc72f63efb7afd data/armoredfoes/loot_table/equipment/leather_armor.json
+cb5cf9297ce198a3a280c7f7ee34410f981da806 data/minecraft/loot_table/equipment/entities/wither_skeleton.json

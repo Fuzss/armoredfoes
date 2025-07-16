@@ -1,0 +1,57 @@
+{
+  "type": "minecraft:equipment",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "armoredfoes:natural_equipment",
+          "children": [
+            {
+              "type": "minecraft:loot_table",
+              "value": "armoredfoes:equipment/leather_armor"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "value": "armoredfoes:equipment/golden_armor"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "value": "armoredfoes:equipment/chainmail_armor"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "value": "armoredfoes:equipment/iron_armor"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "value": "armoredfoes:equipment/diamond_armor"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_sword"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:shield"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "minecraft:equipment/entities/wither_skeleton"
+}

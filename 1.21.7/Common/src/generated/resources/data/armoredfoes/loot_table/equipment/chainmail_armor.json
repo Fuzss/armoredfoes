@@ -1,0 +1,129 @@
+{
+  "type": "minecraft:equipment",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "armoredfoes:simple_sequence",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:chainmail_helmet"
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.9,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "armoredfoes:difficulty_check",
+                      "difficulty": "hard"
+                    }
+                  ],
+                  "name": "minecraft:chainmail_chestplate"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.75,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "minecraft:inverted",
+                      "term": {
+                        "condition": "armoredfoes:difficulty_check",
+                        "difficulty": "hard"
+                      }
+                    }
+                  ],
+                  "name": "minecraft:chainmail_chestplate"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.9,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "armoredfoes:difficulty_check",
+                      "difficulty": "hard"
+                    }
+                  ],
+                  "name": "minecraft:chainmail_leggings"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.75,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "minecraft:inverted",
+                      "term": {
+                        "condition": "armoredfoes:difficulty_check",
+                        "difficulty": "hard"
+                      }
+                    }
+                  ],
+                  "name": "minecraft:chainmail_leggings"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.9,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "armoredfoes:difficulty_check",
+                      "difficulty": "hard"
+                    }
+                  ],
+                  "name": "minecraft:chainmail_boots"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.75,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "minecraft:inverted",
+                      "term": {
+                        "condition": "armoredfoes:difficulty_check",
+                        "difficulty": "hard"
+                      }
+                    }
+                  ],
+                  "name": "minecraft:chainmail_boots"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "armoredfoes:equipment/chainmail_armor"
+}

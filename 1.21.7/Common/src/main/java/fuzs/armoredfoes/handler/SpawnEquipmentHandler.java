@@ -1,0 +1,32 @@
+package fuzs.armoredfoes.handler;
+
+import fuzs.armoredfoes.init.ModLootTables;
+import fuzs.puzzleslib.api.event.v1.core.EventResult;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.storage.loot.LootTable;
+
+import java.util.Collections;
+
+public class SpawnEquipmentHandler {
+
+    public static EventResult onEntityLoad(Entity entity, ServerLevel serverLevel, boolean isNewlySpawned) {
+        if (isNewlySpawned && entity instanceof Mob mob) {
+            ResourceKey<LootTable> resourceKey = ModLootTables.createEntityEquipmentTable(entity.getType());
+            LootTable lootTable = serverLevel.getServer().reloadableRegistries().getLootTable(resourceKey);
+            if (lootTable != LootTable.EMPTY) {
+                for (EquipmentSlot equipmentSlot : EquipmentSlotGroup.ARMOR) {
+                    mob.setItemSlot(equipmentSlot, ItemStack.EMPTY);
+                }
+                mob.equip(resourceKey, Collections.emptyMap());
+            }
+        }
+
+        return EventResult.PASS;
+    }
+}
