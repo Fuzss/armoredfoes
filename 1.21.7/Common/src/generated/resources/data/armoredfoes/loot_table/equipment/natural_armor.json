@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:equipment",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "armoredfoes:select_one",
+          "children": [
+            {
+              "type": "minecraft:loot_table",
+              "value": "armoredfoes:equipment/leather_armor"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "value": "armoredfoes:equipment/golden_armor"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "value": "armoredfoes:equipment/chainmail_armor"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "value": "armoredfoes:equipment/iron_armor"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "value": "armoredfoes:equipment/diamond_armor"
+            }
+          ],
+          "conditions": [
+            {
+              "chance": 0.15,
+              "condition": "armoredfoes:effective_difficulty_check"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "armoredfoes:equipment/natural_armor"
+}

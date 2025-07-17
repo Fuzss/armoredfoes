@@ -5,49 +5,30 @@
       "bonus_rolls": 0.0,
       "entries": [
         {
-          "type": "armoredfoes:natural_equipment",
-          "children": [
+          "type": "minecraft:loot_table",
+          "value": "armoredfoes:equipment/enchanted_natural_armor"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
             {
-              "type": "minecraft:loot_table",
-              "value": "armoredfoes:equipment/leather_armor"
-            },
-            {
-              "type": "minecraft:loot_table",
-              "value": "armoredfoes:equipment/golden_armor"
-            },
-            {
-              "type": "minecraft:loot_table",
-              "value": "armoredfoes:equipment/chainmail_armor"
-            },
-            {
-              "type": "minecraft:loot_table",
-              "value": "armoredfoes:equipment/iron_armor"
-            },
-            {
-              "type": "minecraft:loot_table",
-              "value": "armoredfoes:equipment/diamond_armor"
+              "conditions": [
+                {
+                  "chance": 0.25,
+                  "condition": "armoredfoes:effective_difficulty_check"
+                }
+              ],
+              "function": "armoredfoes:apply_enchantment_provider",
+              "provider": "minecraft:mob_spawn_equipment"
             }
-          ]
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:golden_sword"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:shield"
+          ],
+          "name": "minecraft:stone_sword"
         }
       ],
       "rolls": 1.0

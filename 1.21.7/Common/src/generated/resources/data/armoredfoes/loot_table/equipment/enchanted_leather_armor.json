@@ -9,6 +9,18 @@
           "children": [
             {
               "type": "minecraft:item",
+              "functions": [
+                {
+                  "conditions": [
+                    {
+                      "chance": 0.5,
+                      "condition": "armoredfoes:effective_difficulty_check"
+                    }
+                  ],
+                  "function": "armoredfoes:apply_enchantment_provider",
+                  "provider": "minecraft:mob_spawn_equipment"
+                }
+              ],
               "name": "minecraft:leather_helmet"
             },
             {
@@ -26,6 +38,18 @@
                       "difficulty": "hard"
                     }
                   ],
+                  "functions": [
+                    {
+                      "conditions": [
+                        {
+                          "chance": 0.5,
+                          "condition": "armoredfoes:effective_difficulty_check"
+                        }
+                      ],
+                      "function": "armoredfoes:apply_enchantment_provider",
+                      "provider": "minecraft:mob_spawn_equipment"
+                    }
+                  ],
                   "name": "minecraft:leather_chestplate"
                 },
                 {
@@ -41,6 +65,18 @@
                         "condition": "armoredfoes:difficulty_check",
                         "difficulty": "hard"
                       }
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "conditions": [
+                        {
+                          "chance": 0.5,
+                          "condition": "armoredfoes:effective_difficulty_check"
+                        }
+                      ],
+                      "function": "armoredfoes:apply_enchantment_provider",
+                      "provider": "minecraft:mob_spawn_equipment"
                     }
                   ],
                   "name": "minecraft:leather_chestplate"
@@ -62,6 +98,18 @@
                       "difficulty": "hard"
                     }
                   ],
+                  "functions": [
+                    {
+                      "conditions": [
+                        {
+                          "chance": 0.5,
+                          "condition": "armoredfoes:effective_difficulty_check"
+                        }
+                      ],
+                      "function": "armoredfoes:apply_enchantment_provider",
+                      "provider": "minecraft:mob_spawn_equipment"
+                    }
+                  ],
                   "name": "minecraft:leather_leggings"
                 },
                 {
@@ -77,6 +125,18 @@
                         "condition": "armoredfoes:difficulty_check",
                         "difficulty": "hard"
                       }
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "conditions": [
+                        {
+                          "chance": 0.5,
+                          "condition": "armoredfoes:effective_difficulty_check"
+                        }
+                      ],
+                      "function": "armoredfoes:apply_enchantment_provider",
+                      "provider": "minecraft:mob_spawn_equipment"
                     }
                   ],
                   "name": "minecraft:leather_leggings"
@@ -96,6 +156,18 @@
                     {
                       "condition": "armoredfoes:difficulty_check",
                       "difficulty": "hard"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "conditions": [
+                        {
+                          "chance": 0.5,
+                          "condition": "armoredfoes:effective_difficulty_check"
+                        }
+                      ],
+                      "function": "armoredfoes:apply_enchantment_provider",
+                      "provider": "minecraft:mob_spawn_equipment"
                     }
                   ],
                   "name": "minecraft:leather_boots"
@@ -113,6 +185,18 @@
                         "condition": "armoredfoes:difficulty_check",
                         "difficulty": "hard"
                       }
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "conditions": [
+                        {
+                          "chance": 0.5,
+                          "condition": "armoredfoes:effective_difficulty_check"
+                        }
+                      ],
+                      "function": "armoredfoes:apply_enchantment_provider",
+                      "provider": "minecraft:mob_spawn_equipment"
                     }
                   ],
                   "name": "minecraft:leather_boots"
@@ -125,5 +209,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "armoredfoes:equipment/leather_armor"
+  "random_sequence": "armoredfoes:equipment/enchanted_leather_armor"
 }

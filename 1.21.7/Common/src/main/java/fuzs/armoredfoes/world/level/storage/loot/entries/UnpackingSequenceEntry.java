@@ -22,20 +22,26 @@ import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
-public class SimpleSequenceEntry extends SequentialEntry {
-    public static final MapCodec<SimpleSequenceEntry> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+/**
+ * Like {@link SequentialEntry}, meaning all entries until the first that fails are returned.
+ * <p>
+ * In contrast, here they are also unpacked directly, meaning all loot from the valid entries is generated, not just
+ * from one single entry picked randomly later on.
+ */
+public class UnpackingSequenceEntry extends SequentialEntry {
+    public static final MapCodec<UnpackingSequenceEntry> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
                     LootPoolEntries.CODEC.listOf()
                             .optionalFieldOf("children", List.of())
-                            .forGetter((SimpleSequenceEntry entry) -> entry.children))
+                            .forGetter((UnpackingSequenceEntry entry) -> entry.children))
             .and(singletonFields(instance))
-            .apply(instance, SimpleSequenceEntry::new));
+            .apply(instance, UnpackingSequenceEntry::new));
 
     protected final int weight;
     protected final int quality;
     protected final List<LootItemFunction> functions;
     final BiFunction<ItemStack, LootContext, ItemStack> compositeFunction;
 
-    public SimpleSequenceEntry(List<LootPoolEntryContainer> children, int weight, int quality, List<LootItemCondition> conditions, List<LootItemFunction> functions) {
+    public UnpackingSequenceEntry(List<LootPoolEntryContainer> children, int weight, int quality, List<LootItemCondition> conditions, List<LootItemFunction> functions) {
         super(children, conditions);
         this.weight = weight;
         this.quality = quality;
@@ -46,7 +52,7 @@ public class SimpleSequenceEntry extends SequentialEntry {
     /**
      * @see LootPoolSingletonContainer#singletonFields(RecordCodecBuilder.Instance)
      */
-    protected static Products.P4<RecordCodecBuilder.Mu<SimpleSequenceEntry>, Integer, Integer, List<LootItemCondition>, List<LootItemFunction>> singletonFields(RecordCodecBuilder.Instance<SimpleSequenceEntry> instance) {
+    protected static Products.P4<RecordCodecBuilder.Mu<UnpackingSequenceEntry>, Integer, Integer, List<LootItemCondition>, List<LootItemFunction>> singletonFields(RecordCodecBuilder.Instance<UnpackingSequenceEntry> instance) {
         return instance.group(Codec.INT.optionalFieldOf("weight", 1).forGetter(container -> container.weight),
                         Codec.INT.optionalFieldOf("quality", 0)
                                 .forGetter(lootPoolSingletonContainer -> lootPoolSingletonContainer.quality))
@@ -64,19 +70,19 @@ public class SimpleSequenceEntry extends SequentialEntry {
                 @Override
                 public int getWeight(float luck) {
                     return Math.max(Mth.floor(
-                            SimpleSequenceEntry.this.weight + SimpleSequenceEntry.this.quality * luck), 0);
+                            UnpackingSequenceEntry.this.weight + UnpackingSequenceEntry.this.quality * luck), 0);
                 }
 
                 @Override
                 public void createItemStack(Consumer<ItemStack> stackConsumer, LootContext lootContext) {
                     for (LootPoolEntry lootPoolEntry : lootPoolEntries) {
-                        lootPoolEntry.createItemStack(LootItemFunction.decorate(SimpleSequenceEntry.this.compositeFunction,
+                        lootPoolEntry.createItemStack(LootItemFunction.decorate(UnpackingSequenceEntry.this.compositeFunction,
                                 stackConsumer,
                                 lootContext), lootContext);
                     }
                 }
             });
-            return SimpleSequenceEntry.super.compose(children).expand(context, lootPoolEntries::add);
+            return UnpackingSequenceEntry.super.compose(children).expand(context, lootPoolEntries::add);
         };
     }
 
@@ -92,10 +98,10 @@ public class SimpleSequenceEntry extends SequentialEntry {
 
     @Override
     public LootPoolEntryType getType() {
-        return ModRegistry.SIMPLE_SEQUENCE_LOOT_POOL_ENTRY_TYPE.value();
+        return ModRegistry.UNPACKING_SEQUENCE_LOOT_POOL_ENTRY_TYPE.value();
     }
 
-    public static class Builder extends LootPoolEntryContainer.Builder<SimpleSequenceEntry.Builder> implements FunctionUserBuilder<SimpleSequenceEntry.Builder> {
+    public static class Builder extends LootPoolEntryContainer.Builder<UnpackingSequenceEntry.Builder> implements FunctionUserBuilder<UnpackingSequenceEntry.Builder> {
         private final ImmutableList.Builder<LootPoolEntryContainer> entries = ImmutableList.builder();
         protected int weight = 1;
         protected int quality = 0;
@@ -108,17 +114,17 @@ public class SimpleSequenceEntry extends SequentialEntry {
         }
 
         @Override
-        protected SimpleSequenceEntry.Builder getThis() {
+        protected UnpackingSequenceEntry.Builder getThis() {
             return this;
         }
 
         @Override
-        public SimpleSequenceEntry.Builder apply(LootItemFunction.Builder functionBuilder) {
+        public UnpackingSequenceEntry.Builder apply(LootItemFunction.Builder functionBuilder) {
             this.functions.add(functionBuilder.build());
             return this.getThis();
         }
 
-        public SimpleSequenceEntry.Builder and(LootPoolEntryContainer.Builder<?> childBuilder) {
+        public UnpackingSequenceEntry.Builder and(LootPoolEntryContainer.Builder<?> childBuilder) {
             this.entries.add(childBuilder.build());
             return this.getThis();
         }
@@ -127,19 +133,19 @@ public class SimpleSequenceEntry extends SequentialEntry {
             return this.functions.build();
         }
 
-        public SimpleSequenceEntry.Builder setWeight(int weight) {
+        public UnpackingSequenceEntry.Builder setWeight(int weight) {
             this.weight = weight;
             return this.getThis();
         }
 
-        public SimpleSequenceEntry.Builder setQuality(int quality) {
+        public UnpackingSequenceEntry.Builder setQuality(int quality) {
             this.quality = quality;
             return this.getThis();
         }
 
         @Override
         public LootPoolEntryContainer build() {
-            return new SimpleSequenceEntry(this.entries.build(),
+            return new UnpackingSequenceEntry(this.entries.build(),
                     this.weight,
                     this.quality,
                     this.getConditions(),

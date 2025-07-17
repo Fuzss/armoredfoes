@@ -9,6 +9,8 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
 /**
+ * A simple {@link Difficulty} check.
+ *
  * @see net.minecraft.world.level.storage.loot.predicates.WeatherCheck
  */
 public record DifficultyCheck(Difficulty difficulty) implements LootItemCondition {

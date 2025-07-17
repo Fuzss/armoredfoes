@@ -7,17 +7,31 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.storage.loot.LootTable;
 
 public class ModLootTables {
-    public static final ResourceKey<LootTable> LEATHER_ARMOR_EQUIPMENT_LOOT_TABLE = ModRegistry.REGISTRIES.registerLootTable(
+    public static final ResourceKey<LootTable> LEATHER_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
             "equipment/leather_armor");
-    public static final ResourceKey<LootTable> GOLDEN_ARMOR_EQUIPMENT_LOOT_TABLE = ModRegistry.REGISTRIES.registerLootTable(
+    public static final ResourceKey<LootTable> GOLDEN_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
             "equipment/golden_armor");
-    public static final ResourceKey<LootTable> CHAINMAIL_ARMOR_EQUIPMENT_LOOT_TABLE = ModRegistry.REGISTRIES.registerLootTable(
+    public static final ResourceKey<LootTable> CHAINMAIL_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
             "equipment/chainmail_armor");
-    public static final ResourceKey<LootTable> IRON_ARMOR_EQUIPMENT_LOOT_TABLE = ModRegistry.REGISTRIES.registerLootTable(
+    public static final ResourceKey<LootTable> IRON_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
             "equipment/iron_armor");
-    public static final ResourceKey<LootTable> DIAMOND_ARMOR_EQUIPMENT_LOOT_TABLE = ModRegistry.REGISTRIES.registerLootTable(
+    public static final ResourceKey<LootTable> DIAMOND_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
             "equipment/diamond_armor");
-    public static final ResourceKey<LootTable> WITHER_SKELETON_EQUIPMENT_LOOT_TABLE = createEntityEquipmentTable(
+    public static final ResourceKey<LootTable> NATURAL_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
+            "equipment/natural_armor");
+    public static final ResourceKey<LootTable> ENCHANTED_LEATHER_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
+            "equipment/enchanted_leather_armor");
+    public static final ResourceKey<LootTable> ENCHANTED_GOLDEN_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
+            "equipment/enchanted_golden_armor");
+    public static final ResourceKey<LootTable> ENCHANTED_CHAINMAIL_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
+            "equipment/enchanted_chainmail_armor");
+    public static final ResourceKey<LootTable> ENCHANTED_IRON_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
+            "equipment/enchanted_iron_armor");
+    public static final ResourceKey<LootTable> ENCHANTED_DIAMOND_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
+            "equipment/enchanted_diamond_armor");
+    public static final ResourceKey<LootTable> ENCHANTED_NATURAL_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
+            "equipment/enchanted_natural_armor");
+    public static final ResourceKey<LootTable> WITHER_SKELETON_EQUIPMENT = createEntityEquipmentTable(
             EntityType.WITHER_SKELETON);
 
     public static void bootstrap() {
