@@ -34,7 +34,7 @@ public class ArmoredFoesClient implements ClientModConstructor {
                 64,
                 32);
         MeshTransformer villagerScaling = MeshTransformer.scaling(0.9375F);
-        LayerDefinition illagerInnerArmor = ArmorModels.createArmorLayer(LayerDefinitions.INNER_ARMOR_DEFORMATION)
+        LayerDefinition illagerInnerArmor = ArmorModels.createInnerArmorLayer(LayerDefinitions.INNER_ARMOR_DEFORMATION)
                 .apply(villagerScaling);
         LayerDefinition illagerOuterArmor = ArmorModels.createArmorLayer(LayerDefinitions.OUTER_ARMOR_DEFORMATION)
                 .apply(villagerScaling);

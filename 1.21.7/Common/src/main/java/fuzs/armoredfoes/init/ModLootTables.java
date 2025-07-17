@@ -19,18 +19,8 @@ public class ModLootTables {
             "equipment/diamond_armor");
     public static final ResourceKey<LootTable> NATURAL_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
             "equipment/natural_armor");
-    public static final ResourceKey<LootTable> ENCHANTED_LEATHER_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
-            "equipment/enchanted_leather_armor");
-    public static final ResourceKey<LootTable> ENCHANTED_GOLDEN_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
-            "equipment/enchanted_golden_armor");
-    public static final ResourceKey<LootTable> ENCHANTED_CHAINMAIL_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
-            "equipment/enchanted_chainmail_armor");
-    public static final ResourceKey<LootTable> ENCHANTED_IRON_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
-            "equipment/enchanted_iron_armor");
-    public static final ResourceKey<LootTable> ENCHANTED_DIAMOND_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
-            "equipment/enchanted_diamond_armor");
-    public static final ResourceKey<LootTable> ENCHANTED_NATURAL_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
-            "equipment/enchanted_natural_armor");
+    public static final ResourceKey<LootTable> RAIDER_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
+            "equipment/raider_armor");
 
     public static void bootstrap() {
         // NO-OP

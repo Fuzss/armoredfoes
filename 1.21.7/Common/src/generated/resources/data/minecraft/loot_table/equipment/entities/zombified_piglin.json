@@ -3,25 +3,25 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "chance": 0.1,
-          "condition": "minecraft:random_chance"
-        },
-        {
-          "condition": "minecraft:entity_properties",
-          "entity": "this",
-          "predicate": {
-            "flags": {
-              "is_baby": false
-            }
-          }
-        }
-      ],
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "armoredfoes:equipment/enchanted_golden_armor"
+          "conditions": [
+            {
+              "chance": 0.1,
+              "condition": "minecraft:random_chance"
+            },
+            {
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "flags": {
+                  "is_baby": false
+                }
+              }
+            }
+          ],
+          "value": "armoredfoes:equipment/golden_armor"
         }
       ],
       "rolls": 1.0

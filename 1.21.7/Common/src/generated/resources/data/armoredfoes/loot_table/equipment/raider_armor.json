@@ -14,10 +14,6 @@
           "children": [
             {
               "type": "minecraft:loot_table",
-              "value": "armoredfoes:equipment/leather_armor"
-            },
-            {
-              "type": "minecraft:loot_table",
               "value": "armoredfoes:equipment/golden_armor"
             },
             {
@@ -39,5 +35,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "armoredfoes:equipment/natural_armor"
+  "random_sequence": "armoredfoes:equipment/raider_armor"
 }

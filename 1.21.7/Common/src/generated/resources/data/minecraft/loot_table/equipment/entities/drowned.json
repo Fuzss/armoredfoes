@@ -6,7 +6,13 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "armoredfoes:equipment/enchanted_natural_armor"
+          "conditions": [
+            {
+              "chance": 0.15,
+              "condition": "armoredfoes:effective_difficulty_check"
+            }
+          ],
+          "value": "armoredfoes:equipment/natural_armor"
         }
       ],
       "rolls": 1.0

@@ -22,26 +22,25 @@ import java.util.function.Consumer;
  *
  * @see net.minecraft.world.entity.Mob#populateDefaultEquipmentSlots(RandomSource, DifficultyInstance)
  */
-public class SelectOneEntry extends CompositeEntryBase {
-    public static final MapCodec<SelectOneEntry> CODEC = RecordCodecBuilder.mapCodec((RecordCodecBuilder.Instance<SelectOneEntry> instance) -> instance.group(
+public class SelectionEntry extends CompositeEntryBase {
+    public static final MapCodec<SelectionEntry> CODEC = RecordCodecBuilder.mapCodec((RecordCodecBuilder.Instance<SelectionEntry> instance) -> instance.group(
                     LootPoolEntries.CODEC.listOf()
                             .optionalFieldOf("children", List.of())
-                            .forGetter((SelectOneEntry entry) -> entry.children))
+                            .forGetter((SelectionEntry entry) -> entry.children))
             .and(commonFields(instance).t1())
-            .and(NumberProviders.CODEC.optionalFieldOf("base", UniformGenerator.between(0.0F, 1.0F))
-                    .forGetter((SelectOneEntry entry) -> entry.base))
-            .and(NumberProviders.CODEC.optionalFieldOf("per_value_above_first", ConstantValue.exactly(0.095F))
-                    .forGetter((SelectOneEntry entry) -> entry.perValueAboveFirst))
-            .apply(instance, SelectOneEntry::new));
+            .and(NumberProviders.CODEC.fieldOf("base").forGetter((SelectionEntry entry) -> entry.base))
+            .and(NumberProviders.CODEC.fieldOf("per_value_above_first")
+                    .forGetter((SelectionEntry entry) -> entry.perValueAboveFirst))
+            .apply(instance, SelectionEntry::new));
 
     private final NumberProvider base;
     private final NumberProvider perValueAboveFirst;
 
-    public SelectOneEntry(List<LootPoolEntryContainer> children, List<LootItemCondition> conditions) {
+    public SelectionEntry(List<LootPoolEntryContainer> children, List<LootItemCondition> conditions) {
         this(children, conditions, UniformGenerator.between(0.0F, 1.0F), ConstantValue.exactly(0.095F));
     }
 
-    public SelectOneEntry(List<LootPoolEntryContainer> children, List<LootItemCondition> conditions, NumberProvider base, NumberProvider perValueAboveFirst) {
+    public SelectionEntry(List<LootPoolEntryContainer> children, List<LootItemCondition> conditions, NumberProvider base, NumberProvider perValueAboveFirst) {
         super(children, conditions);
         this.base = base;
         this.perValueAboveFirst = perValueAboveFirst;
@@ -61,6 +60,7 @@ public class SelectOneEntry extends CompositeEntryBase {
 
     protected int getEquipmentTier(LootContext context, int tiers) {
         int equipmentTier = this.base.getInt(context);
+        // slightly different from vanilla with more runs for increasing equipment tier
         for (int i = 0; i < tiers; i++) {
             if (context.getRandom().nextFloat() < this.perValueAboveFirst.getFloat(context)) {
                 equipmentTier++;
@@ -72,10 +72,10 @@ public class SelectOneEntry extends CompositeEntryBase {
 
     @Override
     public LootPoolEntryType getType() {
-        return ModRegistry.SELECT_ONE_LOOT_POOL_ENTRY_TYPE.value();
+        return ModRegistry.SELECTION_LOOT_POOL_ENTRY_TYPE.value();
     }
 
-    public static class Builder extends LootPoolEntryContainer.Builder<SelectOneEntry.Builder> {
+    public static class Builder extends LootPoolEntryContainer.Builder<SelectionEntry.Builder> {
         private final ImmutableList.Builder<LootPoolEntryContainer> entries = ImmutableList.builder();
 
         public Builder(LootPoolEntryContainer.Builder<?>... children) {
@@ -85,18 +85,18 @@ public class SelectOneEntry extends CompositeEntryBase {
         }
 
         @Override
-        protected SelectOneEntry.Builder getThis() {
+        protected SelectionEntry.Builder getThis() {
             return this;
         }
 
-        public SelectOneEntry.Builder and(LootPoolEntryContainer.Builder<?> childBuilder) {
+        public SelectionEntry.Builder and(LootPoolEntryContainer.Builder<?> childBuilder) {
             this.entries.add(childBuilder.build());
             return this.getThis();
         }
 
         @Override
         public LootPoolEntryContainer build() {
-            return new SelectOneEntry(this.entries.build(), this.getConditions());
+            return new SelectionEntry(this.entries.build(), this.getConditions());
         }
     }
 }

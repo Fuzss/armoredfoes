@@ -1,0 +1,60 @@
+{
+  "type": "minecraft:equipment",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "chance": 0.65,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "armoredfoes:raid_check",
+                  "waves": {
+                    "min": 6.0
+                  }
+                }
+              ],
+              "value": "armoredfoes:equipment/raider_armor"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "chance": 0.35,
+                  "condition": "minecraft:random_chance"
+                },
+                {
+                  "condition": "armoredfoes:raid_check",
+                  "waves": {
+                    "max": 5.0,
+                    "min": 3.0
+                  }
+                }
+              ],
+              "value": "armoredfoes:equipment/raider_armor"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "conditions": [
+                {
+                  "chance": 0.15,
+                  "condition": "minecraft:random_chance"
+                }
+              ],
+              "value": "armoredfoes:equipment/raider_armor"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "minecraft:equipment/entities/evoker"
+}

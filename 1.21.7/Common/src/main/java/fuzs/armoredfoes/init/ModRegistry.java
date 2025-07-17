@@ -1,11 +1,12 @@
 package fuzs.armoredfoes.init;
 
 import fuzs.armoredfoes.ArmoredFoes;
-import fuzs.armoredfoes.world.level.storage.loot.entries.SelectOneEntry;
+import fuzs.armoredfoes.world.level.storage.loot.entries.SelectionEntry;
 import fuzs.armoredfoes.world.level.storage.loot.entries.UnpackingSequenceEntry;
 import fuzs.armoredfoes.world.level.storage.loot.functions.ApplyEnchantmentProviderFunction;
 import fuzs.armoredfoes.world.level.storage.loot.predicates.DifficultyCheck;
 import fuzs.armoredfoes.world.level.storage.loot.predicates.EffectiveDifficultyCheck;
+import fuzs.armoredfoes.world.level.storage.loot.predicates.RaidCheck;
 import fuzs.puzzleslib.api.init.v3.registry.RegistryManager;
 import fuzs.puzzleslib.api.init.v3.tags.TagFactory;
 import net.minecraft.core.Holder;
@@ -20,10 +21,10 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 public class ModRegistry {
     public static final RegistrySetBuilder REGISTRY_SET_BUILDER = new RegistrySetBuilder();
     static final RegistryManager REGISTRIES = RegistryManager.from(ArmoredFoes.MOD_ID);
-    public static final Holder.Reference<LootPoolEntryType> SELECT_ONE_LOOT_POOL_ENTRY_TYPE = REGISTRIES.register(
+    public static final Holder.Reference<LootPoolEntryType> SELECTION_LOOT_POOL_ENTRY_TYPE = REGISTRIES.register(
             Registries.LOOT_POOL_ENTRY_TYPE,
-            "select_one",
-            () -> new LootPoolEntryType(SelectOneEntry.CODEC));
+            "selection",
+            () -> new LootPoolEntryType(SelectionEntry.CODEC));
     public static final Holder.Reference<LootPoolEntryType> UNPACKING_SEQUENCE_LOOT_POOL_ENTRY_TYPE = REGISTRIES.register(
             Registries.LOOT_POOL_ENTRY_TYPE,
             "unpacking_sequence",
@@ -36,6 +37,10 @@ public class ModRegistry {
             Registries.LOOT_CONDITION_TYPE,
             "effective_difficulty_check",
             () -> new LootItemConditionType(EffectiveDifficultyCheck.CODEC));
+    public static final Holder.Reference<LootItemConditionType> RAID_CHECK_LOOT_ITEM_CONDITION_TYPE = REGISTRIES.register(
+            Registries.LOOT_CONDITION_TYPE,
+            "raid_check",
+            () -> new LootItemConditionType(RaidCheck.CODEC));
     public static final Holder.Reference<LootItemFunctionType<ApplyEnchantmentProviderFunction>> APPLY_ENCHANTMENT_PROVIDER_LOOT_FUNCTION_TYPE = REGISTRIES.register(
             Registries.LOOT_FUNCTION_TYPE,
             "apply_enchantment_provider",

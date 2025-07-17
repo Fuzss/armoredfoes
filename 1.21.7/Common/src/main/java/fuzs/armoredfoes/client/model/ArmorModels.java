@@ -12,13 +12,19 @@ public class ArmorModels {
         });
     }
 
+    public static LayerDefinition createInnerArmorLayer(CubeDeformation cubeDeformation) {
+        return createArmorLayer(cubeDeformation).apply((MeshDefinition meshDefinition) -> {
+            return modifyInnerMesh(meshDefinition, cubeDeformation);
+        });
+    }
+
     public static LayerDefinition createVillagerArmorLayer(CubeDeformation cubeDeformation) {
         return createArmorLayer(cubeDeformation).apply(ArmorModels::modifyVillagerMesh);
     }
 
     public static LayerDefinition createInnerVillagerArmorLayer(CubeDeformation cubeDeformation) {
         return createVillagerArmorLayer(cubeDeformation).apply((MeshDefinition meshDefinition) -> {
-            return modifyInnerVillagerMesh(meshDefinition, cubeDeformation);
+            return modifyInnerMesh(meshDefinition, cubeDeformation);
         });
     }
 
@@ -28,7 +34,7 @@ public class ArmorModels {
 
     public static LayerDefinition createInnerWitchArmorLayer(CubeDeformation cubeDeformation) {
         return createWitchArmorLayer(cubeDeformation).apply((MeshDefinition meshDefinition) -> {
-            return modifyInnerVillagerMesh(meshDefinition, cubeDeformation);
+            return modifyInnerMesh(meshDefinition, cubeDeformation);
         });
     }
 
@@ -69,7 +75,7 @@ public class ArmorModels {
         return meshDefinition;
     }
 
-    private static MeshDefinition modifyInnerVillagerMesh(MeshDefinition meshDefinition, CubeDeformation cubeDeformation) {
+    private static MeshDefinition modifyInnerMesh(MeshDefinition meshDefinition, CubeDeformation cubeDeformation) {
         PartDefinition partDefinition = meshDefinition.getRoot();
         partDefinition.addOrReplaceChild("right_leg",
                 CubeListBuilder.create()
