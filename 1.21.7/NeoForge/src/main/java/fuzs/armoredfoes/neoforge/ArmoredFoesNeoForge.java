@@ -2,6 +2,7 @@ package fuzs.armoredfoes.neoforge;
 
 import fuzs.armoredfoes.ArmoredFoes;
 import fuzs.armoredfoes.data.loot.ModEquipmentLootProvider;
+import fuzs.armoredfoes.data.tags.ModEntityTagProvider;
 import fuzs.armoredfoes.init.ModRegistry;
 import fuzs.puzzleslib.api.core.v1.ModConstructor;
 import fuzs.puzzleslib.neoforge.api.data.v2.core.DataProviderHelper;
@@ -14,6 +15,7 @@ public class ArmoredFoesNeoForge {
         ModConstructor.construct(ArmoredFoes.MOD_ID, ArmoredFoes::new);
         DataProviderHelper.registerDataProviders(ArmoredFoes.MOD_ID,
                 ModRegistry.REGISTRY_SET_BUILDER,
-                ModEquipmentLootProvider::new);
+                ModEquipmentLootProvider::new,
+                ModEntityTagProvider::new);
     }
 }

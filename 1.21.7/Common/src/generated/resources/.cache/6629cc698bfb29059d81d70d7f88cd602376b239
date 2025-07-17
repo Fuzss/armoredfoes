@@ -1,4 +1,4 @@
-// 1.21.7	2025-07-17T11:30:45.467873	Mod Equipment Loot Provider
+// 1.21.7	2025-07-17T12:23:43.144233	Mod Equipment Loot Provider
 1d78954ee35ee0866b01327cb595ec07200c0cf2 data/armoredfoes/loot_table/equipment/chainmail_armor.json
 d6c3debbd5eb8c9db405cc44b45d32f0cf319d1f data/armoredfoes/loot_table/equipment/diamond_armor.json
 bc3160fc66a2160ae4db6248576a8d9a600f7139 data/armoredfoes/loot_table/equipment/enchanted_chainmail_armor.json
@@ -11,4 +11,8 @@ fd9bda74bba971a6dbf57d0974a9b9a6a350c169 data/armoredfoes/loot_table/equipment/g
 9a988a141678184b9e8b60592128efab33811764 data/armoredfoes/loot_table/equipment/iron_armor.json
 87822fa588216c25f1382b13b1b821d4b29c9201 data/armoredfoes/loot_table/equipment/leather_armor.json
 f3081d8015733a2fe18de865e49dd474064c89fd data/armoredfoes/loot_table/equipment/natural_armor.json
-fa7d048086f2c138d3d6fdf8483c752937b828bc data/minecraft/loot_table/equipment/entities/wither_skeleton.json
+236c50b8aa1844726c31f93ee4beb75a2442f9d7 data/minecraft/loot_table/equipment/entities/drowned.json
+8385c5ca39f6ea27dfb879403f0023972d9f2f9e data/minecraft/loot_table/equipment/entities/piglin.json
+a469a8ddf568a672a7d3dab5c3e84f29a428fc98 data/minecraft/loot_table/equipment/entities/piglin_brute.json
+b2583ba13c4b53f952573f576cd7b6d521cb90d1 data/minecraft/loot_table/equipment/entities/wither_skeleton.json
+a1c14c2a50d1f12a76c95d00872c355ea4a7347c data/minecraft/loot_table/equipment/entities/zombified_piglin.json

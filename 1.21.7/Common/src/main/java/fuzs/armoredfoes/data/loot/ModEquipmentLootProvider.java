@@ -8,20 +8,25 @@ import fuzs.armoredfoes.world.level.storage.loot.predicates.DifficultyCheck;
 import fuzs.armoredfoes.world.level.storage.loot.predicates.EffectiveDifficultyCheck;
 import fuzs.puzzleslib.api.data.v2.AbstractLootProvider;
 import fuzs.puzzleslib.api.data.v2.core.DataProviderContext;
+import net.minecraft.advancements.critereon.EntityFlagsPredicate;
+import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.providers.VanillaEnchantmentProviders;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.*;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.InvertedLootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 
 public class ModEquipmentLootProvider extends AbstractLootProvider.Simple {
@@ -46,11 +51,29 @@ public class ModEquipmentLootProvider extends AbstractLootProvider.Simple {
                 ModLootTables.ENCHANTED_IRON_ARMOR_EQUIPMENT,
                 ModLootTables.ENCHANTED_DIAMOND_ARMOR_EQUIPMENT,
                 true);
-        this.add(ModLootTables.WITHER_SKELETON_EQUIPMENT,
+        this.addNaturalArmorTable(EntityType.WITHER_SKELETON);
+        this.addNaturalArmorTable(EntityType.DROWNED);
+        this.addGoldenArmorTable(EntityType.PIGLIN);
+        this.addGoldenArmorTable(EntityType.PIGLIN_BRUTE);
+        this.addGoldenArmorTable(EntityType.ZOMBIFIED_PIGLIN);
+    }
+
+    private void addNaturalArmorTable(EntityType<?> entityType) {
+        this.add(ModLootTables.createEntityEquipmentTable(entityType),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
-                                .add(NestedLootTable.lootTableReference(ModLootTables.ENCHANTED_NATURAL_ARMOR_EQUIPMENT)))
-                        .withPool(LootPool.lootPool().add(this.createEnchantedSpawnedWeapon(Items.STONE_SWORD))));
+                                .add(NestedLootTable.lootTableReference(ModLootTables.ENCHANTED_NATURAL_ARMOR_EQUIPMENT))));
+    }
+
+    private void addGoldenArmorTable(EntityType<?> entityType) {
+        this.add(ModLootTables.createEntityEquipmentTable(entityType),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .add(NestedLootTable.lootTableReference(ModLootTables.ENCHANTED_GOLDEN_ARMOR_EQUIPMENT))
+                                .when(LootItemRandomChanceCondition.randomChance(0.1F))
+                                .when(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS,
+                                        EntityPredicate.Builder.entity()
+                                                .flags(EntityFlagsPredicate.Builder.flags().setIsBaby(false))))));
     }
 
     private void addNaturalArmorTables(ResourceKey<LootTable> armorTable, ResourceKey<LootTable> leatherTable, ResourceKey<LootTable> goldenTable, ResourceKey<LootTable> chainmailTable, ResourceKey<LootTable> ironTable, ResourceKey<LootTable> diamondTable, boolean enchanted) {

@@ -31,8 +31,6 @@ public class ModLootTables {
             "equipment/enchanted_diamond_armor");
     public static final ResourceKey<LootTable> ENCHANTED_NATURAL_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
             "equipment/enchanted_natural_armor");
-    public static final ResourceKey<LootTable> WITHER_SKELETON_EQUIPMENT = createEntityEquipmentTable(
-            EntityType.WITHER_SKELETON);
 
     public static void bootstrap() {
         // NO-OP

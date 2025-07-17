@@ -7,9 +7,12 @@ import fuzs.armoredfoes.world.level.storage.loot.functions.ApplyEnchantmentProvi
 import fuzs.armoredfoes.world.level.storage.loot.predicates.DifficultyCheck;
 import fuzs.armoredfoes.world.level.storage.loot.predicates.EffectiveDifficultyCheck;
 import fuzs.puzzleslib.api.init.v3.registry.RegistryManager;
+import fuzs.puzzleslib.api.init.v3.tags.TagFactory;
 import net.minecraft.core.Holder;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryType;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunctionType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
@@ -37,6 +40,10 @@ public class ModRegistry {
             Registries.LOOT_FUNCTION_TYPE,
             "apply_enchantment_provider",
             () -> new LootItemFunctionType<>(ApplyEnchantmentProviderFunction.CODEC));
+
+    static final TagFactory TAGS = TagFactory.make(ArmoredFoes.MOD_ID);
+    public static final TagKey<EntityType<?>> SHOWS_WORN_ARMOR_ENTITY_TAG = TAGS.registerEntityTypeTag(
+            "shows_worn_armor");
 
     public static void bootstrap() {
         ModLootTables.bootstrap();
