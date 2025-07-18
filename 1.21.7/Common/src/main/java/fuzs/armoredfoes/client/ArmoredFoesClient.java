@@ -9,6 +9,7 @@ import fuzs.puzzleslib.api.client.event.v1.renderer.AddLivingEntityRenderLayersC
 import fuzs.puzzleslib.api.client.event.v1.renderer.ExtractRenderStateCallback;
 import net.minecraft.client.model.HumanoidArmorModel;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.VillagerModel;
 import net.minecraft.client.model.geom.LayerDefinitions;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshTransformer;
@@ -55,20 +56,20 @@ public class ArmoredFoesClient implements ClientModConstructor {
         context.registerLayerDefinition(ModModelLayers.ILLAGER_INNER_ARMOR, () -> illagerInnerArmor);
         context.registerLayerDefinition(ModModelLayers.ILLAGER_OUTER_ARMOR, () -> illagerOuterArmor);
         context.registerLayerDefinition(ModModelLayers.ILLAGER_BABY_INNER_ARMOR,
-                () -> illagerInnerArmor.apply(HumanoidModel.BABY_TRANSFORMER));
+                () -> illagerInnerArmor.apply(VillagerModel.BABY_TRANSFORMER));
         context.registerLayerDefinition(ModModelLayers.ILLAGER_BABY_OUTER_ARMOR,
-                () -> illagerOuterArmor.apply(HumanoidModel.BABY_TRANSFORMER));
+                () -> illagerOuterArmor.apply(VillagerModel.BABY_TRANSFORMER));
         context.registerLayerDefinition(ModModelLayers.VILLAGER_INNER_ARMOR, () -> villagerInnerArmor);
         context.registerLayerDefinition(ModModelLayers.VILLAGER_OUTER_ARMOR, () -> villagerOuterArmor);
         context.registerLayerDefinition(ModModelLayers.VILLAGER_BABY_INNER_ARMOR,
-                () -> villagerInnerArmor.apply(HumanoidModel.BABY_TRANSFORMER));
+                () -> villagerInnerArmor.apply(VillagerModel.BABY_TRANSFORMER));
         context.registerLayerDefinition(ModModelLayers.VILLAGER_BABY_OUTER_ARMOR,
-                () -> villagerOuterArmor.apply(HumanoidModel.BABY_TRANSFORMER));
+                () -> villagerOuterArmor.apply(VillagerModel.BABY_TRANSFORMER));
         context.registerLayerDefinition(ModModelLayers.WITCH_INNER_ARMOR, () -> witchInnerArmor);
         context.registerLayerDefinition(ModModelLayers.WITCH_OUTER_ARMOR, () -> witchOuterArmor);
         context.registerLayerDefinition(ModModelLayers.WITCH_BABY_INNER_ARMOR,
-                () -> witchInnerArmor.apply(HumanoidModel.BABY_TRANSFORMER));
+                () -> witchInnerArmor.apply(VillagerModel.BABY_TRANSFORMER));
         context.registerLayerDefinition(ModModelLayers.WITCH_BABY_OUTER_ARMOR,
-                () -> witchOuterArmor.apply(HumanoidModel.BABY_TRANSFORMER));
+                () -> witchOuterArmor.apply(VillagerModel.BABY_TRANSFORMER));
     }
 }
