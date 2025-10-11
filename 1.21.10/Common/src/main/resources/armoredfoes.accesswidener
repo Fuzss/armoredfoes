@@ -1,0 +1,27 @@
+accessWidener   v2  named
+accessible  field   net/minecraft/world/level/storage/loot/entries/CompositeEntryBase   children    Ljava/util/List;
+accessible  class   net/minecraft/world/level/storage/loot/entries/ComposableEntryContainer
+accessible  method  net/minecraft/world/level/storage/loot/entries/SequentialEntry  <init>  (Ljava/util/List;Ljava/util/List;)V
+accessible  field   net/minecraft/client/model/IllagerModel head    Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/IllagerModel hat Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/IllagerModel arms    Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/IllagerModel leftLeg Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/IllagerModel rightLeg    Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/IllagerModel rightArm    Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/IllagerModel leftArm Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/WitchModel   head    Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/WitchModel   hat Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/WitchModel   leftLeg Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/WitchModel   rightLeg    Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/WitchModel   arms    Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/VillagerModel    head    Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/VillagerModel    hat Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/VillagerModel    leftLeg Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/VillagerModel    rightLeg    Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/VillagerModel    arms    Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/VexModel body    Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/VexModel rightArm    Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/VexModel leftArm Lnet/minecraft/client/model/geom/ModelPart;
+accessible  field   net/minecraft/client/model/VexModel head    Lnet/minecraft/client/model/geom/ModelPart;
+accessible  method  net/minecraft/client/renderer/entity/layers/HumanoidArmorLayer  shouldRender    (Lnet/minecraft/world/item/equipment/Equippable;Lnet/minecraft/world/entity/EquipmentSlot;)Z
+accessible  method  net/minecraft/client/renderer/entity/HumanoidMobRenderer    getEquipmentIfRenderable    (Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;
