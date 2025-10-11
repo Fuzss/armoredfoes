@@ -20,16 +20,21 @@ import java.util.Collections;
 public class SpawnEquipmentHandler {
 
     public static EventResult onEntityLoad(Entity entity, ServerLevel serverLevel, boolean isNewlySpawned) {
-        @Nullable EntitySpawnReason entitySpawnReason = EntityHelper.getMobSpawnReason(entity);
-        if (isNewlySpawned && entitySpawnReason != null && entitySpawnReason != EntitySpawnReason.COMMAND
-                && entity instanceof Mob mob) {
-            ResourceKey<LootTable> resourceKey = ModLootTables.createEntityEquipmentTable(entity.getType());
-            LootTable lootTable = serverLevel.getServer().reloadableRegistries().getLootTable(resourceKey);
-            if (lootTable != LootTable.EMPTY) {
-                for (EquipmentSlot equipmentSlot : ArmoredFoes.CONFIG.get(ServerConfig.class).slotsToClearBeforeApplying) {
-                    mob.setItemSlot(equipmentSlot, ItemStack.EMPTY);
+        if (isNewlySpawned && entity instanceof Mob mob) {
+            // We cannot determine here when summoned via command if any specific nbt was specified which we should not interfere with (like purposefully setting empty equipment slots).
+            // So, to circumvent any issues, we better do nothing when spawned from commands.
+            @Nullable EntitySpawnReason entitySpawnReason = EntityHelper.getMobSpawnReason(entity);
+            if (entitySpawnReason != null && (!ArmoredFoes.CONFIG.get(ServerConfig.class).ignoreSummonedMobs
+                    || entitySpawnReason != EntitySpawnReason.COMMAND)) {
+                ResourceKey<LootTable> resourceKey = ModLootTables.createEntityEquipmentTable(entity.getType());
+                LootTable lootTable = serverLevel.getServer().reloadableRegistries().getLootTable(resourceKey);
+                if (lootTable != LootTable.EMPTY) {
+                    for (EquipmentSlot equipmentSlot : ArmoredFoes.CONFIG.get(ServerConfig.class).clearedEquipmentSlots) {
+                        mob.setItemSlot(equipmentSlot, ItemStack.EMPTY);
+                    }
+
+                    mob.equip(resourceKey, Collections.emptyMap());
                 }
-                mob.equip(resourceKey, Collections.emptyMap());
             }
         }
 
