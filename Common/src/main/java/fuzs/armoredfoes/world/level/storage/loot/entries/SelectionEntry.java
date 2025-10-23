@@ -52,7 +52,7 @@ public class SelectionEntry extends CompositeEntryBase {
             return ALWAYS_FALSE;
         } else {
             return (LootContext context, Consumer<LootPoolEntry> consumer) -> {
-                int equipmentTier = this.getEquipmentTier(context, children.size());
+                int equipmentTier = this.getEquipmentTier(context, children.size() - 1);
                 return children.get(equipmentTier).expand(context, consumer);
             };
         }
