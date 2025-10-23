@@ -9,6 +9,8 @@ import net.minecraft.world.level.storage.loot.LootTable;
 public class ModLootTables {
     public static final ResourceKey<LootTable> LEATHER_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
             "equipment/leather_armor");
+    public static final ResourceKey<LootTable> COPPER_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
+            "equipment/copper_armor");
     public static final ResourceKey<LootTable> GOLDEN_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(
             "equipment/golden_armor");
     public static final ResourceKey<LootTable> CHAINMAIL_ARMOR_EQUIPMENT = ModRegistry.REGISTRIES.registerLootTable(

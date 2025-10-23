@@ -37,7 +37,7 @@ public class SelectionEntry extends CompositeEntryBase {
     private final NumberProvider perValueAboveFirst;
 
     public SelectionEntry(List<LootPoolEntryContainer> children, List<LootItemCondition> conditions) {
-        this(children, conditions, UniformGenerator.between(0.0F, 1.0F), ConstantValue.exactly(0.095F));
+        this(children, conditions, UniformGenerator.between(0.0F, 2.0F), ConstantValue.exactly(0.1087F));
     }
 
     public SelectionEntry(List<LootPoolEntryContainer> children, List<LootItemCondition> conditions, NumberProvider base, NumberProvider perValueAboveFirst) {

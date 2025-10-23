@@ -24,8 +24,7 @@ public class SpawnEquipmentHandler {
             // We cannot determine here when summoned via command if any specific nbt was specified which we should not interfere with (like purposefully setting empty equipment slots).
             // So, to circumvent any issues, we better do nothing when spawned from commands.
             @Nullable EntitySpawnReason entitySpawnReason = EntityHelper.getMobSpawnReason(entity);
-            if (entitySpawnReason != null && (!ArmoredFoes.CONFIG.get(ServerConfig.class).ignoreSummonedMobs
-                    || entitySpawnReason != EntitySpawnReason.COMMAND)) {
+            if (entitySpawnReason != null) {
                 ResourceKey<LootTable> resourceKey = ModLootTables.createEntityEquipmentTable(entity.getType());
                 LootTable lootTable = serverLevel.getServer().reloadableRegistries().getLootTable(resourceKey);
                 if (lootTable != LootTable.EMPTY) {
