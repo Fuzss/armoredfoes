@@ -8,13 +8,17 @@
           "type": "armoredfoes:selection",
           "base": {
             "type": "minecraft:uniform",
-            "max": 1.0,
+            "max": 2.0,
             "min": 0.0
           },
           "children": [
             {
               "type": "minecraft:loot_table",
               "value": "armoredfoes:equipment/leather_armor"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "value": "armoredfoes:equipment/copper_armor"
             },
             {
               "type": "minecraft:loot_table",
@@ -33,7 +37,7 @@
               "value": "armoredfoes:equipment/diamond_armor"
             }
           ],
-          "per_value_above_first": 0.095
+          "per_value_above_first": 0.1087
         }
       ],
       "rolls": 1.0

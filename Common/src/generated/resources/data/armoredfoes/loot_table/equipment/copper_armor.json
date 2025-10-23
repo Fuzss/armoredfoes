@@ -1,0 +1,213 @@
+{
+  "type": "minecraft:equipment",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "armoredfoes:unpacking_sequence",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "conditions": [
+                    {
+                      "chance": 0.5,
+                      "condition": "armoredfoes:effective_difficulty_check"
+                    }
+                  ],
+                  "function": "armoredfoes:apply_enchantment_provider",
+                  "provider": "minecraft:mob_spawn_equipment"
+                }
+              ],
+              "name": "minecraft:copper_helmet"
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.9,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "armoredfoes:difficulty_check",
+                      "difficulty": "hard"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "conditions": [
+                        {
+                          "chance": 0.5,
+                          "condition": "armoredfoes:effective_difficulty_check"
+                        }
+                      ],
+                      "function": "armoredfoes:apply_enchantment_provider",
+                      "provider": "minecraft:mob_spawn_equipment"
+                    }
+                  ],
+                  "name": "minecraft:copper_chestplate"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.75,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "minecraft:inverted",
+                      "term": {
+                        "condition": "armoredfoes:difficulty_check",
+                        "difficulty": "hard"
+                      }
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "conditions": [
+                        {
+                          "chance": 0.5,
+                          "condition": "armoredfoes:effective_difficulty_check"
+                        }
+                      ],
+                      "function": "armoredfoes:apply_enchantment_provider",
+                      "provider": "minecraft:mob_spawn_equipment"
+                    }
+                  ],
+                  "name": "minecraft:copper_chestplate"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.9,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "armoredfoes:difficulty_check",
+                      "difficulty": "hard"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "conditions": [
+                        {
+                          "chance": 0.5,
+                          "condition": "armoredfoes:effective_difficulty_check"
+                        }
+                      ],
+                      "function": "armoredfoes:apply_enchantment_provider",
+                      "provider": "minecraft:mob_spawn_equipment"
+                    }
+                  ],
+                  "name": "minecraft:copper_leggings"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.75,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "minecraft:inverted",
+                      "term": {
+                        "condition": "armoredfoes:difficulty_check",
+                        "difficulty": "hard"
+                      }
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "conditions": [
+                        {
+                          "chance": 0.5,
+                          "condition": "armoredfoes:effective_difficulty_check"
+                        }
+                      ],
+                      "function": "armoredfoes:apply_enchantment_provider",
+                      "provider": "minecraft:mob_spawn_equipment"
+                    }
+                  ],
+                  "name": "minecraft:copper_leggings"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.9,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "armoredfoes:difficulty_check",
+                      "difficulty": "hard"
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "conditions": [
+                        {
+                          "chance": 0.5,
+                          "condition": "armoredfoes:effective_difficulty_check"
+                        }
+                      ],
+                      "function": "armoredfoes:apply_enchantment_provider",
+                      "provider": "minecraft:mob_spawn_equipment"
+                    }
+                  ],
+                  "name": "minecraft:copper_boots"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.75,
+                      "condition": "minecraft:random_chance"
+                    },
+                    {
+                      "condition": "minecraft:inverted",
+                      "term": {
+                        "condition": "armoredfoes:difficulty_check",
+                        "difficulty": "hard"
+                      }
+                    }
+                  ],
+                  "functions": [
+                    {
+                      "conditions": [
+                        {
+                          "chance": 0.5,
+                          "condition": "armoredfoes:effective_difficulty_check"
+                        }
+                      ],
+                      "function": "armoredfoes:apply_enchantment_provider",
+                      "provider": "minecraft:mob_spawn_equipment"
+                    }
+                  ],
+                  "name": "minecraft:copper_boots"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "armoredfoes:equipment/copper_armor"
+}
