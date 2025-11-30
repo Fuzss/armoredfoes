@@ -47,8 +47,24 @@ public class ModRegistry {
             () -> new LootItemFunctionType<>(ApplyEnchantmentProviderFunction.CODEC));
 
     static final TagFactory TAGS = TagFactory.make(ArmoredFoes.MOD_ID);
+    /**
+     * Entities in this tag are allowed to show equipped armor with the custom armor render layers added by this mod.
+     * <p>
+     * This filter exists as the provided layers are only applicable to mobs with the same size as their vanilla
+     * counterparts which the layers are built for.
+     */
     public static final TagKey<EntityType<?>> SHOWS_WORN_ARMOR_ENTITY_TAG = TAGS.registerEntityTypeTag(
             "shows_worn_armor");
+    /**
+     * Entities in this tag have all their existing equipment cleared in the slots defined by
+     * {@link fuzs.armoredfoes.config.ServerConfig#clearedEquipmentSlots} before new equipment from the equipment loot
+     * table is applied.
+     * <p>
+     * Note that it is possible for the loot table to provide no equipment at all. Clearing existing equipment depends
+     * merely on the presence of the equipment loot table.
+     */
+    public static final TagKey<EntityType<?>> DISCARDS_ORIGINAL_EQUIPMENT_ENTITY_TAG = TAGS.registerEntityTypeTag(
+            "discards_original_equipment");
 
     public static void bootstrap() {
         ModLootTables.bootstrap();

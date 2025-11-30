@@ -124,9 +124,10 @@ public class ModEquipmentLootProvider extends AbstractLootProvider.Simple {
                                                 .when(RaidCheck.raid(IntRange.lowerBound(6))),
                                         NestedLootTable.lootTableReference(ModLootTables.RAIDER_ARMOR_EQUIPMENT)
                                                 .when(LootItemRandomChanceCondition.randomChance(0.35F))
-                                                .when(RaidCheck.raid(IntRange.range(3, 5))),
+                                                .when(RaidCheck.raid(IntRange.lowerBound(3))),
                                         NestedLootTable.lootTableReference(ModLootTables.RAIDER_ARMOR_EQUIPMENT)
-                                                .when(LootItemRandomChanceCondition.randomChance(0.15F))))));
+                                                .when(LootItemRandomChanceCondition.randomChance(0.15F))
+                                                .when(RaidCheck.raid())))));
     }
 
     private LootTable.Builder createArmorEquipment(Item headItem, Item chestItem, Item legsItem, Item feetItem) {
