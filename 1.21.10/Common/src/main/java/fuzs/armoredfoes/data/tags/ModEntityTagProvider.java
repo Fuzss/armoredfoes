@@ -23,5 +23,7 @@ public class ModEntityTagProvider extends AbstractTagProvider<EntityType<?>> {
                         EntityType.WITCH,
                         EntityType.VILLAGER,
                         EntityType.WANDERING_TRADER);
+        // Piglins have some unique armour spawn rules in vanilla; we replace that with the same rules used by all other mobs.
+        this.tag(ModRegistry.DISCARDS_ORIGINAL_EQUIPMENT_ENTITY_TAG).add(EntityType.PIGLIN);
     }
 }

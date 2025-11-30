@@ -33,7 +33,6 @@
                 {
                   "condition": "armoredfoes:raid_check",
                   "waves": {
-                    "max": 5.0,
                     "min": 3.0
                   }
                 }
