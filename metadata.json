@@ -1,0 +1,61 @@
+{
+    "mod": {
+        "id": "armoredfoes",
+        "group": "fuzs.armoredfoes",
+        "name": "Armored Foes",
+        "version": "21.11.0",
+        "authors": [
+            "Fuzs"
+        ],
+        "description": "Give every mob the gear they deserve, from Drowned to Illagers and beyond.",
+        "license": "MPL-2.0"
+    },
+    "dependencies": [
+        {
+            "name": "fabricapi",
+            "type": "required",
+            "platforms": [
+                "fabric"
+            ]
+        },
+        {
+            "name": "forgeconfigapiport",
+            "type": "required",
+            "platforms": [
+                "fabric"
+            ]
+        },
+        {
+            "name": "puzzleslib",
+            "type": "required",
+            "platforms": [
+                "fabric",
+                "neoforge"
+            ]
+        }
+    ],
+    "links": [
+        {
+            "name": "github",
+            "slug": "armoredfoes"
+        },
+        {
+            "name": "curseforge",
+            "slug": "armored-foes",
+            "id": "1369926"
+        },
+        {
+            "name": "modrinth",
+            "slug": "armored-foes",
+            "id": "ahTPKYtE"
+        }
+    ],
+    "environments": {
+        "client": "required",
+        "server": "required"
+    },
+    "platforms": [
+        "fabric",
+        "neoforge"
+    ]
+}

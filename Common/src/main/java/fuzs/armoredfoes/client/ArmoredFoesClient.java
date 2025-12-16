@@ -24,29 +24,30 @@ public class ArmoredFoesClient implements ClientModConstructor {
 
     @Override
     public void onRegisterLayerDefinitions(LayerDefinitionsContext context) {
-        context.registerArmorDefinition(ModModelLayers.HUMANOID_ARMOR, LivingArmorModel.createHumanoidArmorLayerSet());
+        context.registerArmorDefinition(ModModelLayers.HUMANOID_ARMOR, LivingArmorModel::createHumanoidArmorLayerSet);
         context.registerArmorDefinition(ModModelLayers.HUMANOID_BABY_ARMOR,
-                LivingArmorModel.createHumanoidArmorLayerSet().map((LayerDefinition layerDefinition) -> {
+                () -> LivingArmorModel.createHumanoidArmorLayerSet().map((LayerDefinition layerDefinition) -> {
                     return layerDefinition.apply(HumanoidModel.BABY_TRANSFORMER);
                 }));
-        context.registerArmorDefinition(ModModelLayers.ILLAGER_ARMOR, LivingArmorModel.createIllagerArmorLayerSet());
+        context.registerArmorDefinition(ModModelLayers.ILLAGER_ARMOR, LivingArmorModel::createIllagerArmorLayerSet);
         context.registerArmorDefinition(ModModelLayers.ILLAGER_BABY_ARMOR,
-                LivingArmorModel.createIllagerArmorLayerSet().map((LayerDefinition layerDefinition) -> {
+                () -> LivingArmorModel.createIllagerArmorLayerSet().map((LayerDefinition layerDefinition) -> {
                     return layerDefinition.apply(HumanoidModel.BABY_TRANSFORMER);
                 }));
-        context.registerArmorDefinition(ModModelLayers.ILLAGER_CROSSED_ARMOR, LivingArmorModel.createArmedArmorLayerSet());
+        context.registerArmorDefinition(ModModelLayers.ILLAGER_CROSSED_ARMOR,
+                LivingArmorModel::createArmedArmorLayerSet);
         context.registerArmorDefinition(ModModelLayers.ILLAGER_BABY_CROSSED_ARMOR,
-                LivingArmorModel.createArmedArmorLayerSet().map((LayerDefinition layerDefinition) -> {
+                () -> LivingArmorModel.createArmedArmorLayerSet().map((LayerDefinition layerDefinition) -> {
                     return layerDefinition.apply(HumanoidModel.BABY_TRANSFORMER);
                 }));
-        context.registerArmorDefinition(ModModelLayers.VILLAGER_ARMOR, LivingArmorModel.createArmedArmorLayerSet());
+        context.registerArmorDefinition(ModModelLayers.VILLAGER_ARMOR, LivingArmorModel::createArmedArmorLayerSet);
         context.registerArmorDefinition(ModModelLayers.VILLAGER_BABY_ARMOR,
-                LivingArmorModel.createArmedArmorLayerSet().map((LayerDefinition layerDefinition) -> {
+                () -> LivingArmorModel.createArmedArmorLayerSet().map((LayerDefinition layerDefinition) -> {
                     return layerDefinition.apply(HumanoidModel.BABY_TRANSFORMER);
                 }));
-        context.registerArmorDefinition(ModModelLayers.WITCH_ARMOR, LivingArmorModel.createWitchArmorLayerSet());
+        context.registerArmorDefinition(ModModelLayers.WITCH_ARMOR, LivingArmorModel::createWitchArmorLayerSet);
         context.registerArmorDefinition(ModModelLayers.WITCH_BABY_ARMOR,
-                LivingArmorModel.createWitchArmorLayerSet().map((LayerDefinition layerDefinition) -> {
+                () -> LivingArmorModel.createWitchArmorLayerSet().map((LayerDefinition layerDefinition) -> {
                     return layerDefinition.apply(HumanoidModel.BABY_TRANSFORMER);
                 }));
     }
