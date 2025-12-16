@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:equipment",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "armoredfoes:selection",
+          "base": {
+            "type": "minecraft:uniform",
+            "max": 2.0,
+            "min": 0.0
+          },
+          "children": [
+            {
+              "type": "minecraft:loot_table",
+              "value": "armoredfoes:equipment/golden_armor"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "value": "armoredfoes:equipment/chainmail_armor"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "value": "armoredfoes:equipment/iron_armor"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "value": "armoredfoes:equipment/diamond_armor"
+            }
+          ],
+          "per_value_above_first": 0.1087
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "armoredfoes:equipment/raider_armor"
+}

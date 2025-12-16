@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:equipment",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "conditions": [
+            {
+              "chance": 0.15,
+              "condition": "armoredfoes:effective_difficulty_check"
+            }
+          ],
+          "value": "armoredfoes:equipment/natural_armor"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "minecraft:equipment/entities/wither_skeleton"
+}

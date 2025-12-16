@@ -1,0 +1,8 @@
+accessWidener   v2  named
+accessible  field   net/minecraft/world/level/storage/loot/entries/CompositeEntryBase   children    Ljava/util/List;
+accessible  class   net/minecraft/world/level/storage/loot/entries/ComposableEntryContainer
+accessible  method  net/minecraft/world/level/storage/loot/entries/SequentialEntry  <init>  (Ljava/util/List;Ljava/util/List;)V
+accessible  method  net/minecraft/client/model/HumanoidModel    createArmorMeshSet  (Ljava/util/function/Function;Lnet/minecraft/client/model/geom/builders/CubeDeformation;Lnet/minecraft/client/model/geom/builders/CubeDeformation;)Lnet/minecraft/client/renderer/entity/ArmorModelSet;
+accessible  method  net/minecraft/client/model/ZombieVillagerModel  createBaseArmorMesh (Lnet/minecraft/client/model/geom/builders/CubeDeformation;)Lnet/minecraft/client/model/geom/builders/MeshDefinition;
+accessible  method  net/minecraft/client/renderer/entity/layers/HumanoidArmorLayer  shouldRender    (Lnet/minecraft/world/item/equipment/Equippable;Lnet/minecraft/world/entity/EquipmentSlot;)Z
+accessible  method  net/minecraft/client/renderer/entity/HumanoidMobRenderer    getEquipmentIfRenderable    (Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;
