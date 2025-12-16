@@ -1,6 +1,8 @@
 package fuzs.armoredfoes.client.renderer.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import fuzs.armoredfoes.client.handler.EquipmentRenderingHandler;
+import fuzs.puzzleslib.api.client.renderer.v1.RenderStateExtraData;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.ArmorModelSet;
@@ -15,10 +17,12 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.equipment.Equippable;
 
+import java.util.Collections;
+
 /**
  * @see HumanoidArmorLayer
  */
-public abstract class LivingArmorLayer<S extends LivingEntityRenderState, M extends EntityModel<S>, A extends EntityModel<S>> extends RenderLayer<S, M> {
+public class LivingArmorLayer<S extends LivingEntityRenderState, M extends EntityModel<S>, A extends EntityModel<S>> extends RenderLayer<S, M> {
     private final ArmorModelSet<A> modelSet;
     private final ArmorModelSet<A> babyModelSet;
     private final EquipmentLayerRenderer equipmentRenderer;
@@ -60,7 +64,11 @@ public abstract class LivingArmorLayer<S extends LivingEntityRenderState, M exte
         }
     }
 
-    protected abstract ItemStack getItem(S renderState, EquipmentSlot slot);
+    private ItemStack getItem(S renderState, EquipmentSlot slot) {
+        return RenderStateExtraData.getOrDefault(renderState,
+                EquipmentRenderingHandler.ARMOR_EQUIPMENT_KEY,
+                Collections.emptyMap()).getOrDefault(slot, ItemStack.EMPTY);
+    }
 
     private A getArmorModel(S renderState, EquipmentSlot slot) {
         return (renderState.isBaby ? this.babyModelSet : this.modelSet).get(slot);

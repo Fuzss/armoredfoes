@@ -1,10 +1,10 @@
 package fuzs.armoredfoes.client.model;
 
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.ZombieVillagerModel;
 import net.minecraft.client.model.geom.LayerDefinitions;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.model.monster.zombie.ZombieVillagerModel;
 import net.minecraft.client.renderer.entity.ArmorModelSet;
 
 import java.util.Set;
