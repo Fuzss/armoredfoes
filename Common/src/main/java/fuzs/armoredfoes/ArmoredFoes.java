@@ -5,6 +5,7 @@ import fuzs.armoredfoes.handler.SpawnEquipmentHandler;
 import fuzs.armoredfoes.init.ModRegistry;
 import fuzs.puzzleslib.api.config.v3.ConfigHolder;
 import fuzs.puzzleslib.api.core.v1.ModConstructor;
+import fuzs.puzzleslib.api.core.v1.ModLoaderEnvironment;
 import fuzs.puzzleslib.api.core.v1.utility.ResourceLocationHelper;
 import fuzs.puzzleslib.api.event.v1.entity.ServerEntityLevelEvents;
 import net.minecraft.resources.ResourceLocation;
@@ -25,7 +26,9 @@ public class ArmoredFoes implements ModConstructor {
     }
 
     private static void registerEventHandlers() {
-        ServerEntityLevelEvents.LOAD.register(SpawnEquipmentHandler::onEntityLoad);
+        if (ModLoaderEnvironment.INSTANCE.getModLoader().isForgeLike()) {
+            ServerEntityLevelEvents.LOAD.register(SpawnEquipmentHandler::onEntityLoad);
+        }
     }
 
     public static ResourceLocation id(String path) {
