@@ -40,11 +40,5 @@
     "fabric-api": ">=${minFabricApiVersion}",
     "puzzleslib": ">=${minPuzzlesVersion}",
     "minecraft": ">=${minecraftVersion}- <${upcomingMinecraftVersion}-"
-  },
-
-  "custom": {
-    "lithium:options": {
-      "mixin.world.chunk_access": false
-    }
   }
 }

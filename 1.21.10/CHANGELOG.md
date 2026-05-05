@@ -5,11 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v21.10.4-1.21.10] - 2026-05-05
+
+### Fixed
+
+- Fix a chunk loading deadlock when installed together with C2ME
+
 ## [v21.10.3-1.21.10] - 2025-11-30
 
 ### Fixed
 
-- Fix illagers being able to spawn with armour outside raids
+- Fix illagers being able to spawn with armor outside raids
 - Fix raid captain banners always being overridden for pillagers
 
 ## [v21.10.2-1.21.10] - 2025-10-23
