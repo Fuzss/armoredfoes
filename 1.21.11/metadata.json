@@ -3,7 +3,7 @@
         "id": "armoredfoes",
         "group": "fuzs.armoredfoes",
         "name": "Armored Foes",
-        "version": "21.11.1",
+        "version": "21.11.2",
         "authors": [
             "Fuzs"
         ],
@@ -36,13 +36,13 @@
     ],
     "links": [
         {
-            "name": "github",
-            "slug": "armoredfoes"
-        },
-        {
             "name": "curseforge",
             "slug": "armored-foes",
             "id": "1369926"
+        },
+        {
+            "name": "github",
+            "slug": "armoredfoes"
         },
         {
             "name": "modrinth",
