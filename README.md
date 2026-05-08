@@ -1,5 +1,28 @@
 # Armored Foes
 
-A Minecraft mod. Downloads can be found on [CurseForge](https://www.curseforge.com/members/fuzs_/projects) and [Modrinth](https://modrinth.com/user/Fuzs).
+### Minecraft 26.x
 
-![](https://raw.githubusercontent.com/Fuzss/modresources/main/pages/data/armoredfoes/banner.png)
+| Branch | Status | Changelog | Fabric | NeoForge |
+| --- | --- | --- | --- | --- |
+| [26.1.x](https://github.com/Fuzss/armored-foes/tree/26.1.x) | ✅&nbsp;Primary | [CHANGELOG.md](https://github.com/Fuzss/armored-foes/blob/26.1.x/CHANGELOG.md) | <img src="https://cdn.simpleicons.org/curseforge" width="14" />&nbsp;[CurseForge](https://www.curseforge.com/minecraft/mc-mods/armored-foes/files/all?version=26.1&gameVersionTypeId=4)<br /> <img src="https://cdn.simpleicons.org/modrinth" width="14" />&nbsp;[Modrinth](https://modrinth.com/mod/armored-foes/versions?g=26.1&l=fabric) | <img src="https://cdn.simpleicons.org/curseforge" width="14" />&nbsp;[CurseForge](https://www.curseforge.com/minecraft/mc-mods/armored-foes/files/all?version=26.1&gameVersionTypeId=6)<br /> <img src="https://cdn.simpleicons.org/modrinth" width="14" />&nbsp;[Modrinth](https://modrinth.com/mod/armored-foes/versions?g=26.1&l=neoforge) |
+
+### Minecraft 1.21.x
+
+| Branch | Status | Changelog | Fabric | NeoForge |
+| --- | --- | --- | --- | --- |
+| [1.21.11](https://github.com/Fuzss/armored-foes/tree/1.21.11) | ❌&nbsp;Archived | [CHANGELOG.md](https://github.com/Fuzss/armored-foes/blob/1.21.11/CHANGELOG.md) | <img src="https://cdn.simpleicons.org/curseforge" width="14" />&nbsp;[CurseForge](https://www.curseforge.com/minecraft/mc-mods/armored-foes/files/all?version=1.21.11&gameVersionTypeId=4)<br /> <img src="https://cdn.simpleicons.org/modrinth" width="14" />&nbsp;[Modrinth](https://modrinth.com/mod/armored-foes/versions?g=1.21.11&l=fabric) | <img src="https://cdn.simpleicons.org/curseforge" width="14" />&nbsp;[CurseForge](https://www.curseforge.com/minecraft/mc-mods/armored-foes/files/all?version=1.21.11&gameVersionTypeId=6)<br /> <img src="https://cdn.simpleicons.org/modrinth" width="14" />&nbsp;[Modrinth](https://modrinth.com/mod/armored-foes/versions?g=1.21.11&l=neoforge) |
+
+| Branch | Status | Changelog | Downloads |
+| --- | --- | --- | --- |
+| [1.21.10](https://github.com/Fuzss/armored-foes/tree/1.21.10) | ❌&nbsp;Archived | [CHANGELOG.md](https://github.com/Fuzss/armored-foes/blob/1.21.10/CHANGELOG.md) | <img src="https://cdn.simpleicons.org/curseforge" width="14" />&nbsp;[CurseForge](https://www.curseforge.com/members/fuzs_/projects)<br /><img src="https://cdn.simpleicons.org/modrinth" width="14" />&nbsp;[Modrinth](https://modrinth.com/user/Fuzs) |
+| [1.21.8](https://github.com/Fuzss/armored-foes/tree/1.21.8) | ❌&nbsp;Archived | [CHANGELOG.md](https://github.com/Fuzss/armored-foes/blob/1.21.8/CHANGELOG.md) | <img src="https://cdn.simpleicons.org/curseforge" width="14" />&nbsp;[CurseForge](https://www.curseforge.com/members/fuzs_/projects)<br /><img src="https://cdn.simpleicons.org/modrinth" width="14" />&nbsp;[Modrinth](https://modrinth.com/user/Fuzs) |
+
+---
+
+**✅&nbsp;Primary** — Latest version with active development and new features
+
+**✅&nbsp;Maintained** — Receives backports and selected new features
+
+**⚠️&nbsp;Bugfixes&nbsp;only** — Critical fixes and crash fixes only
+
+**❌&nbsp;Archived** — No longer updated
