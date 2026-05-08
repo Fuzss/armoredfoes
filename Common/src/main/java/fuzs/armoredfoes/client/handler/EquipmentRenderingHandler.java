@@ -6,7 +6,7 @@ import fuzs.armoredfoes.ArmoredFoes;
 import fuzs.armoredfoes.client.model.geom.ModModelLayers;
 import fuzs.armoredfoes.client.renderer.entity.layers.LivingArmorLayer;
 import fuzs.armoredfoes.init.ModRegistry;
-import fuzs.puzzleslib.api.client.renderer.v1.RenderStateExtraData;
+import fuzs.puzzleslib.common.api.client.renderer.v1.RenderStateExtraData;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.monster.illager.IllagerModel;
 import net.minecraft.client.model.monster.witch.WitchModel;
@@ -18,6 +18,7 @@ import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.client.renderer.entity.state.*;
+import net.minecraft.core.Holder;
 import net.minecraft.util.context.ContextKey;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.illager.AbstractIllager;
@@ -32,8 +33,7 @@ public class EquipmentRenderingHandler {
     public static void onExtractRenderState(Entity entity, EntityRenderState renderState, float partialTick) {
         // IllagerRenderState extens HumanoidRenderState as of Minecraft 1.21.11, but does not set up most of the properties
         if ((!(renderState instanceof HumanoidRenderState) || renderState instanceof IllagerRenderState)
-                && entity instanceof LivingEntity livingEntity && entity.getType()
-                .is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)) {
+                && entity instanceof LivingEntity livingEntity && entity.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)) {
             ImmutableMap.Builder<EquipmentSlot, ItemStack> builder = ImmutableMap.builder();
             for (EquipmentSlot equipmentSlot : EquipmentSlotGroup.ARMOR) {
                 builder.put(equipmentSlot, HumanoidMobRenderer.getEquipmentIfRenderable(livingEntity, equipmentSlot));
@@ -45,6 +45,7 @@ public class EquipmentRenderingHandler {
 
     @SuppressWarnings("unchecked")
     public static void addLivingEntityRenderLayers(EntityType<?> entityType, LivingEntityRenderer<?, ?, ?> entityRenderer, EntityRendererProvider.Context context) {
+        Holder<EntityType<?>> holder = entityType.builtInRegistryHolder();
         if (entityRenderer.getModel() instanceof IllagerModel<?>) {
             ((LivingEntityRenderer<?, IllagerRenderState, IllagerModel<IllagerRenderState>>) entityRenderer).addLayer(
                     new LivingArmorLayer<>((LivingEntityRenderer<?, IllagerRenderState, IllagerModel<IllagerRenderState>>) entityRenderer,
@@ -57,7 +58,7 @@ public class EquipmentRenderingHandler {
                             context.getEquipmentRenderer()) {
                         @Override
                         public void submit(PoseStack poseStack, SubmitNodeCollector nodeCollector, int packedLight, IllagerRenderState renderState, float yRot, float xRot) {
-                            if (entityType.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)
+                            if (holder.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)
                                     && renderState.armPose == AbstractIllager.IllagerArmPose.CROSSED) {
                                 super.submit(poseStack, nodeCollector, packedLight, renderState, yRot, xRot);
                             }
@@ -72,7 +73,7 @@ public class EquipmentRenderingHandler {
                             context.getEquipmentRenderer()) {
                         @Override
                         public void submit(PoseStack poseStack, SubmitNodeCollector nodeCollector, int packedLight, IllagerRenderState renderState, float yRot, float xRot) {
-                            if (entityType.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)
+                            if (holder.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)
                                     && renderState.armPose != AbstractIllager.IllagerArmPose.CROSSED) {
                                 super.submit(poseStack, nodeCollector, packedLight, renderState, yRot, xRot);
                             }
@@ -85,7 +86,7 @@ public class EquipmentRenderingHandler {
                     context.getEquipmentRenderer()) {
                 @Override
                 public void submit(PoseStack poseStack, SubmitNodeCollector nodeCollector, int packedLight, WitchRenderState renderState, float yRot, float xRot) {
-                    if (entityType.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)) {
+                    if (holder.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)) {
                         super.submit(poseStack, nodeCollector, packedLight, renderState, yRot, xRot);
                     }
                 }
@@ -98,7 +99,7 @@ public class EquipmentRenderingHandler {
                     context.getEquipmentRenderer()) {
                 @Override
                 public void submit(PoseStack poseStack, SubmitNodeCollector nodeCollector, int packedLight, VillagerRenderState renderState, float yRot, float xRot) {
-                    if (entityType.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)) {
+                    if (holder.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)) {
                         super.submit(poseStack, nodeCollector, packedLight, renderState, yRot, xRot);
                     }
                 }
@@ -115,7 +116,7 @@ public class EquipmentRenderingHandler {
                             context.getEquipmentRenderer()) {
                         @Override
                         public void submit(PoseStack poseStack, SubmitNodeCollector nodeCollector, int packedLight, HumanoidRenderState renderState, float yRot, float xRot) {
-                            if (entityType.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)) {
+                            if (holder.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)) {
                                 super.submit(poseStack, nodeCollector, packedLight, renderState, yRot, xRot);
                             }
                         }

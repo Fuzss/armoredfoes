@@ -7,8 +7,8 @@ import fuzs.armoredfoes.world.level.storage.loot.functions.ApplyEnchantmentProvi
 import fuzs.armoredfoes.world.level.storage.loot.predicates.DifficultyCheck;
 import fuzs.armoredfoes.world.level.storage.loot.predicates.EffectiveDifficultyCheck;
 import fuzs.armoredfoes.world.level.storage.loot.predicates.RaidCheck;
-import fuzs.puzzleslib.api.data.v2.AbstractLootProvider;
-import fuzs.puzzleslib.api.data.v2.core.DataProviderContext;
+import fuzs.puzzleslib.common.api.data.v2.AbstractLootProvider;
+import fuzs.puzzleslib.common.api.data.v2.core.DataProviderContext;
 import net.minecraft.advancements.criterion.EntityFlagsPredicate;
 import net.minecraft.advancements.criterion.EntityPredicate;
 import net.minecraft.util.RandomSource;

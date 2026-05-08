@@ -2,7 +2,7 @@ package fuzs.armoredfoes.client.renderer.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import fuzs.armoredfoes.client.handler.EquipmentRenderingHandler;
-import fuzs.puzzleslib.api.client.renderer.v1.RenderStateExtraData;
+import fuzs.puzzleslib.common.api.client.renderer.v1.RenderStateExtraData;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.ArmorModelSet;

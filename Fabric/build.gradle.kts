@@ -6,9 +6,3 @@ dependencies {
     modApi(sharedLibs.fabricapi.fabric)
     modApi(sharedLibs.puzzleslib.fabric)
 }
-
-multiloader {
-    mixins {
-        mixin("EntityFabricMixin", "PersistentEntitySectionManagerFabricMixin")
-    }
-}

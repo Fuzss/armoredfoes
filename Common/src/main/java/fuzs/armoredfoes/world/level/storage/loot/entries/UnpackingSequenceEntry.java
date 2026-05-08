@@ -5,7 +5,6 @@ import com.mojang.datafixers.Products;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import fuzs.armoredfoes.init.ModRegistry;
 import net.minecraft.util.Mth;
 import net.minecraft.util.ProblemReporter;
 import net.minecraft.world.item.ItemStack;
@@ -29,7 +28,7 @@ import java.util.function.Consumer;
  * from one single entry picked randomly later on.
  */
 public class UnpackingSequenceEntry extends SequentialEntry {
-    public static final MapCodec<UnpackingSequenceEntry> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+    public static final MapCodec<UnpackingSequenceEntry> MAP_CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
                     LootPoolEntries.CODEC.listOf()
                             .optionalFieldOf("children", List.of())
                             .forGetter((UnpackingSequenceEntry entry) -> entry.children))
@@ -97,8 +96,8 @@ public class UnpackingSequenceEntry extends SequentialEntry {
     }
 
     @Override
-    public LootPoolEntryType getType() {
-        return ModRegistry.UNPACKING_SEQUENCE_LOOT_POOL_ENTRY_TYPE.value();
+    public MapCodec<SequentialEntry> codec() {
+        return (MapCodec<SequentialEntry>) (MapCodec<?>) MAP_CODEC;
     }
 
     public static class Builder extends LootPoolEntryContainer.Builder<UnpackingSequenceEntry.Builder> implements FunctionUserBuilder<UnpackingSequenceEntry.Builder> {

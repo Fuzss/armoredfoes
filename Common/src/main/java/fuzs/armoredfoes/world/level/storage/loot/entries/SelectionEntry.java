@@ -3,7 +3,6 @@ package fuzs.armoredfoes.world.level.storage.loot.entries;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import fuzs.armoredfoes.init.ModRegistry;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -23,7 +22,7 @@ import java.util.function.Consumer;
  * @see net.minecraft.world.entity.Mob#populateDefaultEquipmentSlots(RandomSource, DifficultyInstance)
  */
 public class SelectionEntry extends CompositeEntryBase {
-    public static final MapCodec<SelectionEntry> CODEC = RecordCodecBuilder.mapCodec((RecordCodecBuilder.Instance<SelectionEntry> instance) -> instance.group(
+    public static final MapCodec<SelectionEntry> MAP_CODEC = RecordCodecBuilder.mapCodec((RecordCodecBuilder.Instance<SelectionEntry> instance) -> instance.group(
                     LootPoolEntries.CODEC.listOf()
                             .optionalFieldOf("children", List.of())
                             .forGetter((SelectionEntry entry) -> entry.children))
@@ -44,6 +43,11 @@ public class SelectionEntry extends CompositeEntryBase {
         super(children, conditions);
         this.base = base;
         this.perValueAboveFirst = perValueAboveFirst;
+    }
+
+    @Override
+    public MapCodec<? extends CompositeEntryBase> codec() {
+        return MAP_CODEC;
     }
 
     @Override
@@ -68,11 +72,6 @@ public class SelectionEntry extends CompositeEntryBase {
         }
 
         return Math.min(equipmentTier, tiers);
-    }
-
-    @Override
-    public LootPoolEntryType getType() {
-        return ModRegistry.SELECTION_LOOT_POOL_ENTRY_TYPE.value();
     }
 
     public static class Builder extends LootPoolEntryContainer.Builder<SelectionEntry.Builder> {

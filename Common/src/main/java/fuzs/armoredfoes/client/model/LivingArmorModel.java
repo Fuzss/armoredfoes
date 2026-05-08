@@ -43,6 +43,7 @@ public class LivingArmorModel {
 
     public static ArmorModelSet<LayerDefinition> createIllagerArmorLayerSet(CubeDeformation innerCubeDeformation, CubeDeformation outerCubeDeformation) {
         return HumanoidModel.createArmorMeshSet(LivingArmorModel::createArmedArmorMesh,
+                HumanoidModel.ADULT_ARMOR_PARTS_PER_SLOT,
                 innerCubeDeformation,
                 outerCubeDeformation).map((MeshDefinition meshDefinition) -> {
             return LayerDefinition.create(meshDefinition, 64, 32);

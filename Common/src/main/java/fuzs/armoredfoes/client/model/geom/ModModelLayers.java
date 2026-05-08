@@ -1,7 +1,7 @@
 package fuzs.armoredfoes.client.model.geom;
 
 import fuzs.armoredfoes.ArmoredFoes;
-import fuzs.puzzleslib.api.client.init.v1.ModelLayerFactory;
+import fuzs.puzzleslib.common.api.client.init.v1.ModelLayerFactory;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelLayerLocation;

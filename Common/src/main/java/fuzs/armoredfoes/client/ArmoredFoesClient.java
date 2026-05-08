@@ -3,10 +3,10 @@ package fuzs.armoredfoes.client;
 import fuzs.armoredfoes.client.handler.EquipmentRenderingHandler;
 import fuzs.armoredfoes.client.model.LivingArmorModel;
 import fuzs.armoredfoes.client.model.geom.ModModelLayers;
-import fuzs.puzzleslib.api.client.core.v1.ClientModConstructor;
-import fuzs.puzzleslib.api.client.core.v1.context.LayerDefinitionsContext;
-import fuzs.puzzleslib.api.client.event.v1.renderer.AddLivingEntityRenderLayersCallback;
-import fuzs.puzzleslib.api.client.event.v1.renderer.ExtractRenderStateCallback;
+import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
+import fuzs.puzzleslib.common.api.client.core.v1.context.LayerDefinitionsContext;
+import fuzs.puzzleslib.common.api.client.event.v1.renderer.AddLivingEntityRenderLayersCallback;
+import fuzs.puzzleslib.common.api.client.event.v1.renderer.ExtractEntityRenderStateCallback;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 
@@ -18,7 +18,7 @@ public class ArmoredFoesClient implements ClientModConstructor {
     }
 
     private static void registerEventHandlers() {
-        ExtractRenderStateCallback.EVENT.register(EquipmentRenderingHandler::onExtractRenderState);
+        ExtractEntityRenderStateCallback.EVENT.register(EquipmentRenderingHandler::onExtractRenderState);
         AddLivingEntityRenderLayersCallback.EVENT.register(EquipmentRenderingHandler::addLivingEntityRenderLayers);
     }
 

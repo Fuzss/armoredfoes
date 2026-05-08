@@ -2,7 +2,7 @@ package fuzs.armoredfoes.fabric.client;
 
 import fuzs.armoredfoes.ArmoredFoes;
 import fuzs.armoredfoes.client.ArmoredFoesClient;
-import fuzs.puzzleslib.api.client.core.v1.ClientModConstructor;
+import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
 import net.fabricmc.api.ClientModInitializer;
 
 public class ArmoredFoesFabricClient implements ClientModInitializer {
