@@ -1,6 +1,6 @@
 package fuzs.armoredfoes.fabric;
 
-import fuzs.armoredfoes.ArmoredFoes;
+import fuzs.armoredfoes.common.ArmoredFoes;
 import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import net.fabricmc.api.ModInitializer;
 

@@ -1,7 +1,7 @@
 package fuzs.armoredfoes.neoforge.client;
 
-import fuzs.armoredfoes.ArmoredFoes;
-import fuzs.armoredfoes.client.ArmoredFoesClient;
+import fuzs.armoredfoes.common.ArmoredFoes;
+import fuzs.armoredfoes.common.client.ArmoredFoesClient;
 import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.Mod;

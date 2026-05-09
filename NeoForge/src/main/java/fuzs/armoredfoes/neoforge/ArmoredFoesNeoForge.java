@@ -1,9 +1,9 @@
 package fuzs.armoredfoes.neoforge;
 
-import fuzs.armoredfoes.ArmoredFoes;
-import fuzs.armoredfoes.data.loot.ModEquipmentLootProvider;
-import fuzs.armoredfoes.data.tags.ModEntityTagProvider;
-import fuzs.armoredfoes.init.ModRegistry;
+import fuzs.armoredfoes.common.ArmoredFoes;
+import fuzs.armoredfoes.common.data.loot.ModEquipmentLootProvider;
+import fuzs.armoredfoes.common.data.tags.ModEntityTagProvider;
+import fuzs.armoredfoes.common.init.ModRegistry;
 import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import fuzs.puzzleslib.neoforge.api.data.v2.core.DataProviderHelper;
 import net.neoforged.fml.common.Mod;
