@@ -53,9 +53,7 @@ public class EquipmentRenderingHandler {
                             ModModelLayers.bake(ModModelLayers.ILLAGER_CROSSED_ARMOR,
                                     context.getModelSet(),
                                     IllagerModel::new),
-                            ModModelLayers.bake(ModModelLayers.ILLAGER_BABY_CROSSED_ARMOR,
-                                    context.getModelSet(),
-                                    IllagerModel::new),
+                            null,
                             context.getEquipmentRenderer()) {
                         @Override
                         public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, IllagerRenderState state, float yRot, float xRot) {
@@ -68,9 +66,7 @@ public class EquipmentRenderingHandler {
             ((LivingEntityRenderer<?, IllagerRenderState, IllagerModel<IllagerRenderState>>) entityRenderer).addLayer(
                     new LivingArmorLayer<>((LivingEntityRenderer<?, IllagerRenderState, IllagerModel<IllagerRenderState>>) entityRenderer,
                             ModModelLayers.bake(ModModelLayers.ILLAGER_ARMOR, context.getModelSet(), IllagerModel::new),
-                            ModModelLayers.bake(ModModelLayers.ILLAGER_BABY_ARMOR,
-                                    context.getModelSet(),
-                                    IllagerModel::new),
+                            null,
                             context.getEquipmentRenderer()) {
                         @Override
                         public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, IllagerRenderState state, float yRot, float xRot) {
@@ -83,7 +79,7 @@ public class EquipmentRenderingHandler {
         } else if (entityRenderer.getModel() instanceof WitchModel) {
             ((LivingEntityRenderer<?, WitchRenderState, WitchModel>) entityRenderer).addLayer(new LivingArmorLayer<>((LivingEntityRenderer<?, WitchRenderState, WitchModel>) entityRenderer,
                     ModModelLayers.bake(ModModelLayers.WITCH_ARMOR, context.getModelSet(), WitchModel::new),
-                    ModModelLayers.bake(ModModelLayers.WITCH_BABY_ARMOR, context.getModelSet(), WitchModel::new),
+                    null,
                     context.getEquipmentRenderer()) {
                 @Override
                 public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, WitchRenderState state, float yRot, float xRot) {

@@ -16,14 +16,9 @@ public class ModModelLayers {
     public static final ArmorModelSet<ModelLayerLocation> HUMANOID_BABY_ARMOR = MODEL_LAYERS.registerArmorSet(
             "humanoid_baby");
     public static final ArmorModelSet<ModelLayerLocation> ILLAGER_ARMOR = MODEL_LAYERS.registerArmorSet("illager");
-    public static final ArmorModelSet<ModelLayerLocation> ILLAGER_BABY_ARMOR = MODEL_LAYERS.registerArmorSet(
-            "illager_baby");
     public static final ArmorModelSet<ModelLayerLocation> ILLAGER_CROSSED_ARMOR = MODEL_LAYERS.registerArmorSet(
             "illager/crossed");
-    public static final ArmorModelSet<ModelLayerLocation> ILLAGER_BABY_CROSSED_ARMOR = MODEL_LAYERS.registerArmorSet(
-            "illager_baby/crossed");
     public static final ArmorModelSet<ModelLayerLocation> WITCH_ARMOR = MODEL_LAYERS.registerArmorSet("witch");
-    public static final ArmorModelSet<ModelLayerLocation> WITCH_BABY_ARMOR = MODEL_LAYERS.registerArmorSet("witch_baby");
     public static final ArmorModelSet<ModelLayerLocation> VILLAGER_ARMOR = MODEL_LAYERS.registerArmorSet("villager");
     public static final ArmorModelSet<ModelLayerLocation> VILLAGER_BABY_ARMOR = MODEL_LAYERS.registerArmorSet(
             "villager_baby");
