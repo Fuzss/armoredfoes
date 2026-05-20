@@ -53,34 +53,55 @@ public abstract class LivingArmorLayer<T extends LivingEntity, M extends EntityM
     public void render(PoseStack poseStack, MultiBufferSource bufferSource, int lightCoords, T entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
         this.renderArmorPiece(poseStack,
                 bufferSource,
-                entity,
-                EquipmentSlot.CHEST,
                 lightCoords,
+                entity,
+                limbSwing,
+                limbSwingAmount,
+                ageInTicks,
+                netHeadYaw,
+                headPitch,
+                EquipmentSlot.CHEST,
                 this.getArmorModel(entity, EquipmentSlot.CHEST));
         this.renderArmorPiece(poseStack,
                 bufferSource,
-                entity,
-                EquipmentSlot.LEGS,
                 lightCoords,
+                entity,
+                limbSwing,
+                limbSwingAmount,
+                ageInTicks,
+                netHeadYaw,
+                headPitch,
+                EquipmentSlot.LEGS,
                 this.getArmorModel(entity, EquipmentSlot.LEGS));
         this.renderArmorPiece(poseStack,
                 bufferSource,
-                entity,
-                EquipmentSlot.FEET,
                 lightCoords,
+                entity,
+                limbSwing,
+                limbSwingAmount,
+                ageInTicks,
+                netHeadYaw,
+                headPitch,
+                EquipmentSlot.FEET,
                 this.getArmorModel(entity, EquipmentSlot.FEET));
         this.renderArmorPiece(poseStack,
                 bufferSource,
-                entity,
-                EquipmentSlot.HEAD,
                 lightCoords,
+                entity,
+                limbSwing,
+                limbSwingAmount,
+                ageInTicks,
+                netHeadYaw,
+                headPitch,
+                EquipmentSlot.HEAD,
                 this.getArmorModel(entity, EquipmentSlot.HEAD));
     }
 
-    private void renderArmorPiece(PoseStack poseStack, MultiBufferSource bufferSource, T entity, EquipmentSlot slot, int lightCoords, A model) {
+    private void renderArmorPiece(PoseStack poseStack, MultiBufferSource bufferSource, int lightCoords, T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, EquipmentSlot slot, A model) {
         ItemStack itemStack = entity.getItemBySlot(slot);
         if (itemStack.getItem() instanceof ArmorItem item) {
             if (item.getEquipmentSlot() == slot) {
+                model.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
                 this.getParentModel().copyPropertiesTo(model);
                 this.setAllVisible(model, false);
                 this.setPartVisibility(entity, model, slot);

@@ -23,8 +23,6 @@ public class EquipmentRenderingHandler {
                     (LivingEntityRenderer<AbstractIllager, IllagerModel<AbstractIllager>>) entityRenderer,
                     new IllagerModel<>(context.bakeLayer(ModModelLayers.ILLAGER_INNER_ARMOR)),
                     new IllagerModel<>(context.bakeLayer(ModModelLayers.ILLAGER_OUTER_ARMOR)),
-                    new IllagerModel<>(context.bakeLayer(ModModelLayers.ILLAGER_BABY_INNER_ARMOR)),
-                    new IllagerModel<>(context.bakeLayer(ModModelLayers.ILLAGER_BABY_OUTER_ARMOR)),
                     context.getModelManager()) {
                 @Override
                 public void render(PoseStack poseStack, MultiBufferSource bufferSource, int lightCoords, AbstractIllager entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
@@ -47,8 +45,6 @@ public class EquipmentRenderingHandler {
                     (LivingEntityRenderer<AbstractIllager, IllagerModel<AbstractIllager>>) entityRenderer,
                     new IllagerModel<>(context.bakeLayer(ModModelLayers.ILLAGER_INNER_ARMOR)),
                     new IllagerModel<>(context.bakeLayer(ModModelLayers.ILLAGER_OUTER_ARMOR)),
-                    new IllagerModel<>(context.bakeLayer(ModModelLayers.ILLAGER_BABY_INNER_ARMOR)),
-                    new IllagerModel<>(context.bakeLayer(ModModelLayers.ILLAGER_BABY_OUTER_ARMOR)),
                     context.getModelManager()) {
                 @Override
                 public void render(PoseStack poseStack, MultiBufferSource bufferSource, int lightCoords, AbstractIllager entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
@@ -72,8 +68,6 @@ public class EquipmentRenderingHandler {
                     (LivingEntityRenderer<LivingEntity, WitchModel<LivingEntity>>) entityRenderer,
                     new WitchModel<>(context.bakeLayer(ModModelLayers.WITCH_INNER_ARMOR)),
                     new WitchModel<>(context.bakeLayer(ModModelLayers.WITCH_OUTER_ARMOR)),
-                    new WitchModel<>(context.bakeLayer(ModModelLayers.WITCH_BABY_INNER_ARMOR)),
-                    new WitchModel<>(context.bakeLayer(ModModelLayers.WITCH_BABY_OUTER_ARMOR)),
                     context.getModelManager()) {
                 @Override
                 public void render(PoseStack poseStack, MultiBufferSource bufferSource, int lightCoords, LivingEntity entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
@@ -96,8 +90,6 @@ public class EquipmentRenderingHandler {
                     (LivingEntityRenderer<LivingEntity, VillagerModel<LivingEntity>>) entityRenderer,
                     new VillagerModel<>(context.bakeLayer(ModModelLayers.VILLAGER_INNER_ARMOR)),
                     new VillagerModel<>(context.bakeLayer(ModModelLayers.VILLAGER_OUTER_ARMOR)),
-                    new VillagerModel<>(context.bakeLayer(ModModelLayers.VILLAGER_BABY_INNER_ARMOR)),
-                    new VillagerModel<>(context.bakeLayer(ModModelLayers.VILLAGER_BABY_OUTER_ARMOR)),
                     context.getModelManager()) {
                 @Override
                 public void render(PoseStack poseStack, MultiBufferSource bufferSource, int lightCoords, LivingEntity entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {

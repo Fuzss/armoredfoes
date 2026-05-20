@@ -1,20 +1,14 @@
 package fuzs.armoredfoes.client.model;
 
 import fuzs.armoredfoes.client.model.geom.builders.LayerDefinition;
-import fuzs.puzzleslib.api.client.renderer.v1.model.BabyModelTransform;
 import fuzs.puzzleslib.api.client.renderer.v1.model.geom.builders.MeshDefinition;
-import fuzs.puzzleslib.api.client.renderer.v1.model.geom.builders.MeshTransformer;
 import fuzs.puzzleslib.api.client.renderer.v1.model.geom.builders.PartDefinition;
 import net.minecraft.client.model.ZombieVillagerModel;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
 
-import java.util.Set;
-
-public class ArmorModels {
-    public static final MeshTransformer HUMANOID_BABY_TRANSFORMER = new BabyModelTransform(true, 16.0F, 0.0F, 2.0F, 2.0F, 24.0F, Set.of("head"));
-    public static final MeshTransformer VILLAGER_BABY_TRANSFORMER = MeshTransformer.scaling(0.5F);
+public class LivingArmorModel {
 
     public static LayerDefinition createArmorLayer(CubeDeformation cubeDeformation) {
         return new LayerDefinition(ZombieVillagerModel.createArmorLayer(cubeDeformation)).apply((MeshDefinition meshDefinition) -> {
@@ -29,7 +23,7 @@ public class ArmorModels {
     }
 
     public static LayerDefinition createVillagerArmorLayer(CubeDeformation cubeDeformation) {
-        return createArmorLayer(cubeDeformation).apply(ArmorModels::modifyVillagerMesh);
+        return createArmorLayer(cubeDeformation).apply(LivingArmorModel::modifyVillagerMesh);
     }
 
     public static LayerDefinition createInnerVillagerArmorLayer(CubeDeformation cubeDeformation) {
@@ -39,7 +33,7 @@ public class ArmorModels {
     }
 
     public static LayerDefinition createWitchArmorLayer(CubeDeformation cubeDeformation) {
-        return createVillagerArmorLayer(cubeDeformation).apply(ArmorModels::modifyWitchMesh);
+        return createVillagerArmorLayer(cubeDeformation).apply(LivingArmorModel::modifyWitchMesh);
     }
 
     public static LayerDefinition createInnerWitchArmorLayer(CubeDeformation cubeDeformation) {
@@ -49,39 +43,43 @@ public class ArmorModels {
     }
 
     private static MeshDefinition modifyMesh(MeshDefinition meshDefinition, CubeDeformation cubeDeformation) {
-        PartDefinition partDefinition = meshDefinition.getRoot();
-        partDefinition.addOrReplaceChild("body",
+        PartDefinition root = meshDefinition.getRoot();
+        root.addOrReplaceChild("body",
                 CubeListBuilder.create()
                         .texOffs(16, 16)
                         .addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, cubeDeformation.extend(0.1F, 0.1F, 0.6F)),
                 PartPose.ZERO);
-        PartDefinition partDefinition3 = partDefinition.addOrReplaceChild("arms",
+        PartDefinition arms = root.addOrReplaceChild("arms",
                 CubeListBuilder.create(),
                 PartPose.offsetAndRotation(0.0F, 3.0F, -1.0F, -0.75F, 0.0F, 0.0F));
-        partDefinition3.addOrReplaceChild("right_shoulder",
+        arms.addOrReplaceChild("right_shoulder",
                 CubeListBuilder.create().texOffs(40, 16).addBox(-8.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, cubeDeformation),
                 PartPose.ZERO);
-        partDefinition3.addOrReplaceChild("left_shoulder",
+        arms.addOrReplaceChild("left_shoulder",
                 CubeListBuilder.create()
                         .texOffs(40, 16)
                         .mirror()
                         .addBox(4.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, cubeDeformation),
                 PartPose.ZERO);
+        root.getChild("head").addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.ZERO);
         return meshDefinition;
     }
 
     private static MeshDefinition modifyVillagerMesh(MeshDefinition meshDefinition) {
-        PartDefinition partDefinition = meshDefinition.getRoot();
-        partDefinition.clearChild("right_arm");
-        partDefinition.clearChild("left_arm");
+        PartDefinition root = meshDefinition.getRoot();
+        root.clearChild("right_arm");
+        root.clearChild("left_arm");
+        PartDefinition head = root.getChild("head");
+        PartDefinition hat = head.addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.ZERO);
+        hat.addOrReplaceChild("hat_rim", CubeListBuilder.create(), PartPose.ZERO);
+        head.addOrReplaceChild("nose", CubeListBuilder.create(), PartPose.ZERO);
         return meshDefinition;
     }
 
     private static MeshDefinition modifyWitchMesh(MeshDefinition meshDefinition) {
-        PartDefinition partDefinition = meshDefinition.getRoot();
-        // witches already wear a hat
-        PartDefinition partDefinition2 = partDefinition.clearChild("head");
-        partDefinition2.addOrReplaceChild("nose", CubeListBuilder.create(), PartPose.ZERO);
+        PartDefinition root = meshDefinition.getRoot();
+        // Witches already wear a hat.
+        root.clearChild("head");
         return meshDefinition;
     }
 
