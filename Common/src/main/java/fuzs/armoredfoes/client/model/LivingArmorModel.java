@@ -1,6 +1,6 @@
 package fuzs.armoredfoes.client.model;
 
-import fuzs.armoredfoes.client.model.geom.builders.LayerDefinition;
+import fuzs.puzzleslib.api.client.renderer.v1.model.geom.builders.LayerDefinition;
 import fuzs.puzzleslib.api.client.renderer.v1.model.geom.builders.MeshDefinition;
 import fuzs.puzzleslib.api.client.renderer.v1.model.geom.builders.PartDefinition;
 import net.minecraft.client.model.ZombieVillagerModel;

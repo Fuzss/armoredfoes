@@ -3,12 +3,12 @@ package fuzs.armoredfoes.client;
 import fuzs.armoredfoes.client.handler.EquipmentRenderingHandler;
 import fuzs.armoredfoes.client.model.LivingArmorModel;
 import fuzs.armoredfoes.client.model.geom.ModModelLayers;
-import fuzs.armoredfoes.client.model.geom.builders.LayerDefinition;
 import fuzs.puzzleslib.api.client.core.v1.ClientModConstructor;
 import fuzs.puzzleslib.api.client.core.v1.context.LayerDefinitionsContext;
 import fuzs.puzzleslib.api.client.event.v1.renderer.AddLivingEntityRenderLayersCallback;
 import net.minecraft.client.model.HumanoidArmorModel;
 import net.minecraft.client.model.geom.LayerDefinitions;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
 
 public class ArmoredFoesClient implements ClientModConstructor {
 

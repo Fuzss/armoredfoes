@@ -13,4 +13,3 @@ accessible  field   net/minecraft/client/model/VillagerModel    head    Lnet/min
 accessible  field   net/minecraft/client/model/VillagerModel    hat Lnet/minecraft/client/model/geom/ModelPart;
 accessible  field   net/minecraft/client/model/VillagerModel    leftLeg Lnet/minecraft/client/model/geom/ModelPart;
 accessible  field   net/minecraft/client/model/VillagerModel    rightLeg    Lnet/minecraft/client/model/geom/ModelPart;
-accessible  method  net/minecraft/client/model/geom/builders/LayerDefinition    <init>  (Lnet/minecraft/client/model/geom/builders/MeshDefinition;Lnet/minecraft/client/model/geom/builders/MaterialDefinition;)V
