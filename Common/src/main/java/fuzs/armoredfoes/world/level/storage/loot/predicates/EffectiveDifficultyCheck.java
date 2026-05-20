@@ -6,9 +6,9 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import fuzs.armoredfoes.init.ModRegistry;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.context.ContextKey;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
@@ -41,12 +41,12 @@ public record EffectiveDifficultyCheck(NumberProvider chance) implements LootIte
     }
 
     @Override
-    public Set<ContextKey<?>> getReferencedContextParams() {
+    public Set<LootContextParam<?>> getReferencedContextParams() {
         return Sets.union(this.chance.getReferencedContextParams(), ImmutableSet.of(LootContextParams.ORIGIN));
     }
 
     public static DifficultyInstance getDifficulty(LootContext context) {
-        BlockPos blockPos = BlockPos.containing(context.getParameter(LootContextParams.ORIGIN));
+        BlockPos blockPos = BlockPos.containing(context.getParam(LootContextParams.ORIGIN));
         return context.getLevel().getCurrentDifficultyAt(blockPos);
     }
 

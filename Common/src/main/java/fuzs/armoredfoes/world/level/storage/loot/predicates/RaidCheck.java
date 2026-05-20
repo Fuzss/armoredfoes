@@ -3,10 +3,10 @@ package fuzs.armoredfoes.world.level.storage.loot.predicates;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import fuzs.armoredfoes.init.ModRegistry;
-import net.minecraft.util.context.ContextKey;
 import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.level.storage.loot.IntRange;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
@@ -25,7 +25,7 @@ public record RaidCheck(Optional<IntRange> waves) implements LootItemCondition {
 
     @Override
     public boolean test(LootContext context) {
-        if (context.getOptionalParameter(LootContextParams.THIS_ENTITY) instanceof Raider raider) {
+        if (context.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof Raider raider) {
             return raider.getCurrentRaid() != null && (this.waves.isEmpty() || this.waves.get()
                     .test(context, raider.getCurrentRaid().getGroupsSpawned()));
         } else {
@@ -34,7 +34,7 @@ public record RaidCheck(Optional<IntRange> waves) implements LootItemCondition {
     }
 
     @Override
-    public Set<ContextKey<?>> getReferencedContextParams() {
+    public Set<LootContextParam<?>> getReferencedContextParams() {
         return this.waves.map(IntRange::getReferencedContextParams)
                 .orElseGet(LootItemCondition.super::getReferencedContextParams);
     }

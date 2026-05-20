@@ -1,125 +1,142 @@
 package fuzs.armoredfoes.client.handler;
 
-import com.google.common.collect.ImmutableMap;
 import com.mojang.blaze3d.vertex.PoseStack;
-import fuzs.armoredfoes.ArmoredFoes;
 import fuzs.armoredfoes.client.model.geom.ModModelLayers;
-import fuzs.armoredfoes.client.renderer.entity.layers.LivingArmorLayer;
+import fuzs.armoredfoes.client.renderer.entity.layers.IllagerArmorLayer;
+import fuzs.armoredfoes.client.renderer.entity.layers.VillagerArmorLayer;
 import fuzs.armoredfoes.init.ModRegistry;
-import fuzs.puzzleslib.api.client.renderer.v1.RenderStateExtraData;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.monster.illager.IllagerModel;
-import net.minecraft.client.model.monster.witch.WitchModel;
-import net.minecraft.client.model.npc.VillagerModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.ArmorModelSet;
+import net.minecraft.client.model.*;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.state.*;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.monster.illager.AbstractIllager;
-import net.minecraft.world.item.ItemStack;
-
-import java.util.Map;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.AbstractIllager;
 
 public class EquipmentRenderingHandler {
-    public static final ContextKey<Map<EquipmentSlot, ItemStack>> ARMOR_EQUIPMENT_KEY = new ContextKey<>(ArmoredFoes.id(
-            "armor_equipment"));
-
-    public static void onExtractRenderState(Entity entity, EntityRenderState renderState, float partialTick) {
-        // IllagerRenderState extens HumanoidRenderState as of Minecraft 1.21.11, but does not set up most of the properties
-        if ((!(renderState instanceof HumanoidRenderState) || renderState instanceof IllagerRenderState)
-                && entity instanceof LivingEntity livingEntity && entity.getType()
-                .is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)) {
-            ImmutableMap.Builder<EquipmentSlot, ItemStack> builder = ImmutableMap.builder();
-            for (EquipmentSlot equipmentSlot : EquipmentSlotGroup.ARMOR) {
-                builder.put(equipmentSlot, HumanoidMobRenderer.getEquipmentIfRenderable(livingEntity, equipmentSlot));
-            }
-
-            RenderStateExtraData.set(renderState, ARMOR_EQUIPMENT_KEY, builder.build());
-        }
-    }
 
     @SuppressWarnings("unchecked")
-    public static void addLivingEntityRenderLayers(EntityType<?> entityType, LivingEntityRenderer<?, ?, ?> entityRenderer, EntityRendererProvider.Context context) {
+    public static void addLivingEntityRenderLayers(EntityType<?> entityType, LivingEntityRenderer<?, ?> entityRenderer, EntityRendererProvider.Context context) {
         if (entityRenderer.getModel() instanceof IllagerModel<?>) {
-            ((LivingEntityRenderer<?, IllagerRenderState, IllagerModel<IllagerRenderState>>) entityRenderer).addLayer(
-                    new LivingArmorLayer<>((LivingEntityRenderer<?, IllagerRenderState, IllagerModel<IllagerRenderState>>) entityRenderer,
-                            ModModelLayers.bake(ModModelLayers.ILLAGER_CROSSED_ARMOR,
-                                    context.getModelSet(),
-                                    IllagerModel::new),
-                            ModModelLayers.bake(ModModelLayers.ILLAGER_BABY_CROSSED_ARMOR,
-                                    context.getModelSet(),
-                                    IllagerModel::new),
-                            context.getEquipmentRenderer()) {
-                        @Override
-                        public void submit(PoseStack poseStack, SubmitNodeCollector nodeCollector, int packedLight, IllagerRenderState renderState, float yRot, float xRot) {
-                            if (entityType.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)
-                                    && renderState.armPose == AbstractIllager.IllagerArmPose.CROSSED) {
-                                super.submit(poseStack, nodeCollector, packedLight, renderState, yRot, xRot);
-                            }
-                        }
-                    });
-            ((LivingEntityRenderer<?, IllagerRenderState, IllagerModel<IllagerRenderState>>) entityRenderer).addLayer(
-                    new LivingArmorLayer<>((LivingEntityRenderer<?, IllagerRenderState, IllagerModel<IllagerRenderState>>) entityRenderer,
-                            ModModelLayers.bake(ModModelLayers.ILLAGER_ARMOR, context.getModelSet(), IllagerModel::new),
-                            ModModelLayers.bake(ModModelLayers.ILLAGER_BABY_ARMOR,
-                                    context.getModelSet(),
-                                    IllagerModel::new),
-                            context.getEquipmentRenderer()) {
-                        @Override
-                        public void submit(PoseStack poseStack, SubmitNodeCollector nodeCollector, int packedLight, IllagerRenderState renderState, float yRot, float xRot) {
-                            if (entityType.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)
-                                    && renderState.armPose != AbstractIllager.IllagerArmPose.CROSSED) {
-                                super.submit(poseStack, nodeCollector, packedLight, renderState, yRot, xRot);
-                            }
-                        }
-                    });
-        } else if (entityRenderer.getModel() instanceof WitchModel) {
-            ((LivingEntityRenderer<?, WitchRenderState, WitchModel>) entityRenderer).addLayer(new LivingArmorLayer<>((LivingEntityRenderer<?, WitchRenderState, WitchModel>) entityRenderer,
-                    ModModelLayers.bake(ModModelLayers.WITCH_ARMOR, context.getModelSet(), WitchModel::new),
-                    ModModelLayers.bake(ModModelLayers.WITCH_BABY_ARMOR, context.getModelSet(), WitchModel::new),
-                    context.getEquipmentRenderer()) {
+            ((LivingEntityRenderer<AbstractIllager, IllagerModel<AbstractIllager>>) entityRenderer).addLayer(new IllagerArmorLayer<>(
+                    (LivingEntityRenderer<AbstractIllager, IllagerModel<AbstractIllager>>) entityRenderer,
+                    new IllagerModel<>(context.bakeLayer(ModModelLayers.ILLAGER_INNER_ARMOR)),
+                    new IllagerModel<>(context.bakeLayer(ModModelLayers.ILLAGER_OUTER_ARMOR)),
+                    new IllagerModel<>(context.bakeLayer(ModModelLayers.ILLAGER_BABY_INNER_ARMOR)),
+                    new IllagerModel<>(context.bakeLayer(ModModelLayers.ILLAGER_BABY_OUTER_ARMOR)),
+                    context.getModelManager()) {
                 @Override
-                public void submit(PoseStack poseStack, SubmitNodeCollector nodeCollector, int packedLight, WitchRenderState renderState, float yRot, float xRot) {
-                    if (entityType.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)) {
-                        super.submit(poseStack, nodeCollector, packedLight, renderState, yRot, xRot);
+                public void render(PoseStack poseStack, MultiBufferSource bufferSource, int lightCoords, AbstractIllager entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
+                    if (entityType.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)
+                            && entity.getArmPose() == AbstractIllager.IllagerArmPose.CROSSED) {
+                        super.render(poseStack,
+                                bufferSource,
+                                lightCoords,
+                                entity,
+                                limbSwing,
+                                limbSwingAmount,
+                                partialTick,
+                                ageInTicks,
+                                netHeadYaw,
+                                headPitch);
                     }
                 }
             });
-        } else if (entityRenderer.getModel() instanceof VillagerModel) {
-            ((LivingEntityRenderer<?, VillagerRenderState, VillagerModel>) entityRenderer).addLayer(new LivingArmorLayer<>(
-                    (LivingEntityRenderer<?, VillagerRenderState, VillagerModel>) entityRenderer,
-                    ModModelLayers.bake(ModModelLayers.VILLAGER_ARMOR, context.getModelSet(), VillagerModel::new),
-                    ModModelLayers.bake(ModModelLayers.VILLAGER_BABY_ARMOR, context.getModelSet(), VillagerModel::new),
-                    context.getEquipmentRenderer()) {
+            ((LivingEntityRenderer<AbstractIllager, IllagerModel<AbstractIllager>>) entityRenderer).addLayer(new IllagerArmorLayer<>(
+                    (LivingEntityRenderer<AbstractIllager, IllagerModel<AbstractIllager>>) entityRenderer,
+                    new IllagerModel<>(context.bakeLayer(ModModelLayers.ILLAGER_INNER_ARMOR)),
+                    new IllagerModel<>(context.bakeLayer(ModModelLayers.ILLAGER_OUTER_ARMOR)),
+                    new IllagerModel<>(context.bakeLayer(ModModelLayers.ILLAGER_BABY_INNER_ARMOR)),
+                    new IllagerModel<>(context.bakeLayer(ModModelLayers.ILLAGER_BABY_OUTER_ARMOR)),
+                    context.getModelManager()) {
                 @Override
-                public void submit(PoseStack poseStack, SubmitNodeCollector nodeCollector, int packedLight, VillagerRenderState renderState, float yRot, float xRot) {
+                public void render(PoseStack poseStack, MultiBufferSource bufferSource, int lightCoords, AbstractIllager entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
+                    if (entityType.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)
+                            && entity.getArmPose() != AbstractIllager.IllagerArmPose.CROSSED) {
+                        super.render(poseStack,
+                                bufferSource,
+                                lightCoords,
+                                entity,
+                                limbSwing,
+                                limbSwingAmount,
+                                partialTick,
+                                ageInTicks,
+                                netHeadYaw,
+                                headPitch);
+                    }
+                }
+            });
+        } else if (entityRenderer.getModel() instanceof WitchModel<?>) {
+            ((LivingEntityRenderer<LivingEntity, WitchModel<LivingEntity>>) entityRenderer).addLayer(new VillagerArmorLayer<>(
+                    (LivingEntityRenderer<LivingEntity, WitchModel<LivingEntity>>) entityRenderer,
+                    new WitchModel<>(context.bakeLayer(ModModelLayers.WITCH_INNER_ARMOR)),
+                    new WitchModel<>(context.bakeLayer(ModModelLayers.WITCH_OUTER_ARMOR)),
+                    new WitchModel<>(context.bakeLayer(ModModelLayers.WITCH_BABY_INNER_ARMOR)),
+                    new WitchModel<>(context.bakeLayer(ModModelLayers.WITCH_BABY_OUTER_ARMOR)),
+                    context.getModelManager()) {
+                @Override
+                public void render(PoseStack poseStack, MultiBufferSource bufferSource, int lightCoords, LivingEntity entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
                     if (entityType.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)) {
-                        super.submit(poseStack, nodeCollector, packedLight, renderState, yRot, xRot);
+                        super.render(poseStack,
+                                bufferSource,
+                                lightCoords,
+                                entity,
+                                limbSwing,
+                                limbSwingAmount,
+                                partialTick,
+                                ageInTicks,
+                                netHeadYaw,
+                                headPitch);
+                    }
+                }
+            });
+        } else if (entityRenderer.getModel() instanceof VillagerModel<?>) {
+            ((LivingEntityRenderer<LivingEntity, VillagerModel<LivingEntity>>) entityRenderer).addLayer(new VillagerArmorLayer<>(
+                    (LivingEntityRenderer<LivingEntity, VillagerModel<LivingEntity>>) entityRenderer,
+                    new VillagerModel<>(context.bakeLayer(ModModelLayers.VILLAGER_INNER_ARMOR)),
+                    new VillagerModel<>(context.bakeLayer(ModModelLayers.VILLAGER_OUTER_ARMOR)),
+                    new VillagerModel<>(context.bakeLayer(ModModelLayers.VILLAGER_BABY_INNER_ARMOR)),
+                    new VillagerModel<>(context.bakeLayer(ModModelLayers.VILLAGER_BABY_OUTER_ARMOR)),
+                    context.getModelManager()) {
+                @Override
+                public void render(PoseStack poseStack, MultiBufferSource bufferSource, int lightCoords, LivingEntity entity, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
+                    if (entityType.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)) {
+                        super.render(poseStack,
+                                bufferSource,
+                                lightCoords,
+                                entity,
+                                limbSwing,
+                                limbSwingAmount,
+                                partialTick,
+                                ageInTicks,
+                                netHeadYaw,
+                                headPitch);
                     }
                 }
             });
         } else if (entityRenderer.getModel() instanceof HumanoidModel<?>) {
-            ((LivingEntityRenderer<?, HumanoidRenderState, HumanoidModel<HumanoidRenderState>>) entityRenderer).addLayer(
-                    new HumanoidArmorLayer<>((LivingEntityRenderer<?, HumanoidRenderState, HumanoidModel<HumanoidRenderState>>) entityRenderer,
-                            ArmorModelSet.bake(ModModelLayers.HUMANOID_ARMOR,
-                                    context.getModelSet(),
-                                    HumanoidModel::new),
-                            ArmorModelSet.bake(ModModelLayers.HUMANOID_BABY_ARMOR,
-                                    context.getModelSet(),
-                                    HumanoidModel::new),
-                            context.getEquipmentRenderer()) {
-                        @Override
-                        public void submit(PoseStack poseStack, SubmitNodeCollector nodeCollector, int packedLight, HumanoidRenderState renderState, float yRot, float xRot) {
-                            if (entityType.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)) {
-                                super.submit(poseStack, nodeCollector, packedLight, renderState, yRot, xRot);
-                            }
-                        }
-                    });
+            ((LivingEntityRenderer<LivingEntity, HumanoidModel<LivingEntity>>) entityRenderer).addLayer(new HumanoidArmorLayer<>(
+                    (LivingEntityRenderer<LivingEntity, HumanoidModel<LivingEntity>>) entityRenderer,
+                    new HumanoidArmorModel<>(context.bakeLayer(ModModelLayers.HUMANOID_INNER_ARMOR)),
+                    new HumanoidArmorModel<>(context.bakeLayer(ModModelLayers.HUMANOID_OUTER_ARMOR)),
+                    context.getModelManager()) {
+                @Override
+                public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, LivingEntity livingEntity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
+                    if (entityType.is(ModRegistry.SHOWS_WORN_ARMOR_ENTITY_TAG)) {
+                        super.render(poseStack,
+                                buffer,
+                                packedLight,
+                                livingEntity,
+                                limbSwing,
+                                limbSwingAmount,
+                                partialTicks,
+                                ageInTicks,
+                                netHeadYaw,
+                                headPitch);
+                    }
+                }
+            });
         }
     }
 }

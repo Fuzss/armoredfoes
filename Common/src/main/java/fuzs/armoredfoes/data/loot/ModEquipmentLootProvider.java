@@ -9,8 +9,8 @@ import fuzs.armoredfoes.world.level.storage.loot.predicates.EffectiveDifficultyC
 import fuzs.armoredfoes.world.level.storage.loot.predicates.RaidCheck;
 import fuzs.puzzleslib.api.data.v2.AbstractLootProvider;
 import fuzs.puzzleslib.api.data.v2.core.DataProviderContext;
-import net.minecraft.advancements.criterion.EntityFlagsPredicate;
-import net.minecraft.advancements.criterion.EntityPredicate;
+import net.minecraft.advancements.critereon.EntityFlagsPredicate;
+import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
@@ -42,7 +42,6 @@ public class ModEquipmentLootProvider extends AbstractLootProvider.Simple {
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .add(new SelectionEntry.Builder(NestedLootTable.lootTableReference(ModLootTables.LEATHER_ARMOR_EQUIPMENT),
-                                        NestedLootTable.lootTableReference(ModLootTables.COPPER_ARMOR_EQUIPMENT),
                                         NestedLootTable.lootTableReference(ModLootTables.GOLDEN_ARMOR_EQUIPMENT),
                                         NestedLootTable.lootTableReference(ModLootTables.CHAINMAIL_ARMOR_EQUIPMENT),
                                         NestedLootTable.lootTableReference(ModLootTables.IRON_ARMOR_EQUIPMENT),
@@ -59,11 +58,6 @@ public class ModEquipmentLootProvider extends AbstractLootProvider.Simple {
                         Items.LEATHER_CHESTPLATE,
                         Items.LEATHER_LEGGINGS,
                         Items.LEATHER_BOOTS));
-        this.add(ModLootTables.COPPER_ARMOR_EQUIPMENT,
-                this.createArmorEquipment(Items.COPPER_HELMET,
-                        Items.COPPER_CHESTPLATE,
-                        Items.COPPER_LEGGINGS,
-                        Items.COPPER_BOOTS));
         this.add(ModLootTables.GOLDEN_ARMOR_EQUIPMENT,
                 this.createArmorEquipment(Items.GOLDEN_HELMET,
                         Items.GOLDEN_CHESTPLATE,

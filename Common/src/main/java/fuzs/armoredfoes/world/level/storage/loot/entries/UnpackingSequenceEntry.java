@@ -7,7 +7,6 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import fuzs.armoredfoes.init.ModRegistry;
 import net.minecraft.util.Mth;
-import net.minecraft.util.ProblemReporter;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.ValidationContext;
@@ -91,8 +90,7 @@ public class UnpackingSequenceEntry extends SequentialEntry {
         super.validate(validationContext);
 
         for (int i = 0; i < this.functions.size(); i++) {
-            this.functions.get(i)
-                    .validate(validationContext.forChild(new ProblemReporter.IndexedFieldPathElement("functions", i)));
+            this.functions.get(i).validate(validationContext.forChild(".function[" + i + "]"));
         }
     }
 
